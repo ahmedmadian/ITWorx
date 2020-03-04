@@ -26,6 +26,8 @@
 		DE5794412410307C00341DFC /* NewsAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794402410307C00341DFC /* NewsAPIEndpoints.swift */; };
 		DE57944424103B3900341DFC /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57944324103B3900341DFC /* Article.swift */; };
 		DE57944624103B6700341DFC /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57944524103B6700341DFC /* Source.swift */; };
+		DE5794492410411500341DFC /* AppStartupRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794482410411500341DFC /* AppStartupRoute.swift */; };
+		DE57944B2410417D00341DFC /* AppStartupCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57944A2410417D00341DFC /* AppStartupCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		DE5794402410307C00341DFC /* NewsAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIEndpoints.swift; sourceTree = "<group>"; };
 		DE57944324103B3900341DFC /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		DE57944524103B6700341DFC /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		DE5794482410411500341DFC /* AppStartupRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupRoute.swift; sourceTree = "<group>"; };
+		DE57944A2410417D00341DFC /* AppStartupCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartupCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 		DE5794082410211C00341DFC /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				DE579447241040FA00341DFC /* Coordinator */,
 				DE57944224103B0700341DFC /* Model */,
 				DE57943A2410292500341DFC /* RemoteDataSource */,
 				DE5794202410229200341DFC /* Library */,
@@ -165,6 +170,15 @@
 				DE57944524103B6700341DFC /* Source.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DE579447241040FA00341DFC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				DE5794482410411500341DFC /* AppStartupRoute.swift */,
+				DE57944A2410417D00341DFC /* AppStartupCoordinator.swift */,
+			);
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +299,7 @@
 				DE57944424103B3900341DFC /* Article.swift in Sources */,
 				DE579422241022A400341DFC /* Storyboards.swift in Sources */,
 				DE579439241028D600341DFC /* BaseServiceError.swift in Sources */,
+				DE5794492410411500341DFC /* AppStartupRoute.swift in Sources */,
 				DE57942D2410267B00341DFC /* Endpointed.swift in Sources */,
 				DE57940E2410211C00341DFC /* ViewController.swift in Sources */,
 				DE57942B2410264300341DFC /* BaseAPIService.swift in Sources */,
@@ -296,6 +311,7 @@
 				DE57943F24102ED200341DFC /* NewsAPIService.swift in Sources */,
 				DE5794412410307C00341DFC /* NewsAPIEndpoints.swift in Sources */,
 				DE579433241026F400341DFC /* HTTPMethod+HTTPSchema.swift in Sources */,
+				DE57944B2410417D00341DFC /* AppStartupCoordinator.swift in Sources */,
 				DE5794372410277500341DFC /* Error+code.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
