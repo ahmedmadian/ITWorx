@@ -1,22 +1,42 @@
 PODS:
   - Alamofire (4.9.1)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxCoreData (1.0.0):
+    - RxCocoa (~> 5.0)
+    - RxSwift (~> 5.0)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.1)
   - XCoordinator (2.0.6):
     - XCoordinator/Core (= 2.0.6)
   - XCoordinator/Core (2.0.6)
 
 DEPENDENCIES:
   - Alamofire
+  - RxCocoa
+  - RxCoreData
+  - RxSwift
   - XCoordinator
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - RxCocoa
+    - RxCoreData
+    - RxRelay
+    - RxSwift
     - XCoordinator
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
+  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   XCoordinator: 67772bf463acec002a920ab5eb04f46835dcf123
 
-PODFILE CHECKSUM: d317f69153c20ae649a870bdda9105386abfd581
+PODFILE CHECKSUM: 07fa8f9acc3b85be9d40b111ccb715e5c9b6d099
 
 COCOAPODS: 1.8.4

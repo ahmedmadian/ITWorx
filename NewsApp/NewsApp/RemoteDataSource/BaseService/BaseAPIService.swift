@@ -24,7 +24,7 @@ extension BaseAPIServiceProtocol {
         generalParameters.merge(with: parameters)
         
         
-        Alamofire.request(endPoint.fullURL, method: Alamofire.HTTPMethod.init(rawValue: endPoint.method.rawValue)!, parameters: generalParameters, headers: nil).responseData { (response) in
+        Alamofire.request(endPoint.fullURL, method: Alamofire.HTTPMethod.init(rawValue: endPoint.method.rawValue)!, parameters: generalParameters, headers: endPoint.headers).responseData { (response) in
             switch response.result {
             case .success(let data):
                 do {

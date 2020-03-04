@@ -4,6 +4,9 @@
 def swiftPods
   pod 'Alamofire'
   pod 'XCoordinator'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxCoreData'
 end
 
 target 'NewsApp' do
