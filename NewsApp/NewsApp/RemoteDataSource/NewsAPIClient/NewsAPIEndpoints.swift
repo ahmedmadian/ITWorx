@@ -9,25 +9,67 @@
 import Foundation
 
 enum NewsAPIEndpoints: Endpointable {
-   
+    
     case topHeadlines(country: String, categories: [String])
     
-    var path: String {
-        return ""
-    }
-    
-    var method: HTTPMethod {
-        return .post
-    }
-    
+    //MARK:- Properties
     var name: String {
         switch self {
-        case .topHeadlines(_,_):
+        case .topHeadlines:
             return "top-headlines"
         }
     }
     
+    private var schema: HTTPSchema {
+        switch self {
+        default :
+            return .HTTPS
+        }
+    }
+    
+    private var host: String {
+        switch self {
+        default :
+            return "newsapi.org"
+        }
+    }
+    
+    private var path: String {
+        switch self {
+        default :
+            return "v2"
+        }
+    }
+    
+    private var base: String {
+        switch self {
+        default:
+            return "\(schema.rawValue)://\(host)"
+        }
+    }
+    
+    var fullURL: String {
+        switch self {
+        default :
+            return "\(self.base)/\(self.path)/\(self.name)"
+        }
+    }
+    
     var parameters: [String : Any] {
-           return ["":""]
+        switch self {
+        case .topHeadlines:
+            return [:]
+        }
+    }
+    
+    var headers: [String: String] {
+        return [ NewsAPIConstants.HeaderParameterKeys.APIKey : NewsAPIConstants.HeaderParameterValues.APIKey]
+    }
+    
+    var method: HTTPMethod {
+        switch self {
+        case .topHeadlines:
+            return .get
+        }
     }
 }

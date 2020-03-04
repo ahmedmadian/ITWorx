@@ -23,10 +23,8 @@ extension BaseAPIServiceProtocol {
         var generalParameters = [String:Any]()
         generalParameters.merge(with: parameters)
         
-        let endpointUrl = "\(endPoint.base)/\(endPoint.path)/\(endPoint.name)"
-        print(endpointUrl)
         
-        Alamofire.request(endpointUrl, method: Alamofire.HTTPMethod.init(rawValue: endPoint.method.rawValue)!, parameters: generalParameters, headers: nil).responseData { (response) in
+        Alamofire.request(endPoint.fullURL, method: Alamofire.HTTPMethod.init(rawValue: endPoint.method.rawValue)!, parameters: generalParameters, headers: nil).responseData { (response) in
             switch response.result {
             case .success(let data):
                 do {

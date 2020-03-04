@@ -9,15 +9,10 @@
 import Foundation
 
 protocol Endpointable {
-    var path: String { get }
-    var base: String { get }
-    var method: HTTPMethod { get }
     var name: String { get }
-    var parameters: [String : Any] {get}
+    var parameters: [String : Any] { get }
+    var headers: [String : String] { get }
+    var fullURL: String { get }
+    var method: HTTPMethod { get }
 }
 
-extension Endpointable {
-    var base: String {
-        return AppConstants.defaultBaseUrl
-    }
-}

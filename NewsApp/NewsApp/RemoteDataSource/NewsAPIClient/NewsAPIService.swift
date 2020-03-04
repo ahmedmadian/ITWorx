@@ -7,6 +7,21 @@
 //
 
 import Foundation
+
 protocol NewsAPIServiceable: BaseAPIServiceProtocol {
-//    func fetchArticles(with endPoint: Endpointable, with parameters: [String: Any]?) -> Observable<[Article]>
+    func fethcTopHeadlines(completion: @escaping([Article]?, Error?) -> Void)
+}
+
+class NewsAPI: NewsAPIServiceable {
+    func fethcTopHeadlines(completion: @escaping ([Article]?, Error?) -> Void) {
+       
+    }
+}
+
+
+// MARK: - Home
+struct GlobalResponse<T>: Codable where T: Codable {
+    let status: String
+    let totalResults: Int
+    let articles: [T]
 }

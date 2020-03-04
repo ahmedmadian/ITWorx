@@ -8,17 +8,24 @@
 
 import Foundation
 
-struct HeaderParameterKeys {
-    static let APIKey = "X-Api-Key"
+struct NewsAPIConstants {
+    
+    static let defaultBaseUrl = "http://blinkappservices.com"
+    
+    struct HeaderParameterKeys {
+        static let APIKey = "X-Api-Key"
+    }
+
+    struct HeaderParameterValues {
+        static let APIKey = "dc231d56db084cea9c3e459ff6716df2"
+    }
+
+    struct NewsAPIParameterKeys {
+        static let Country = "country"
+        static let PageSize = "pageSize"
+        static let Category = "category"
+        static let Language = "language"
+    }
 }
 
-struct HeaderParameterValues {
-    static let APIKey = "dc231d56db084cea9c3e459ff6716df2"
-}
 
-struct NewsAPIParameterKeys {
-    static let Country = "country"
-    static let PageSize = "pageSize"
-    static let Sources = "sources"
-    static let Language = "language"
-}

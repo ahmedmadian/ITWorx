@@ -19,12 +19,13 @@
 		DE57942D2410267B00341DFC /* Endpointed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57942C2410267B00341DFC /* Endpointed.swift */; };
 		DE57942F241026A000341DFC /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57942E241026A000341DFC /* Dictionary+Merge.swift */; };
 		DE579433241026F400341DFC /* HTTPMethod+HTTPSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE579432241026F400341DFC /* HTTPMethod+HTTPSchema.swift */; };
-		DE5794352410273200341DFC /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794342410273200341DFC /* AppConstants.swift */; };
 		DE5794372410277500341DFC /* Error+code.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794362410277500341DFC /* Error+code.swift */; };
 		DE579439241028D600341DFC /* BaseServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE579438241028D600341DFC /* BaseServiceError.swift */; };
 		DE57943D2410295700341DFC /* NewsAPIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57943C2410295700341DFC /* NewsAPIConstants.swift */; };
 		DE57943F24102ED200341DFC /* NewsAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57943E24102ED200341DFC /* NewsAPIService.swift */; };
 		DE5794412410307C00341DFC /* NewsAPIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794402410307C00341DFC /* NewsAPIEndpoints.swift */; };
+		DE57944424103B3900341DFC /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57944324103B3900341DFC /* Article.swift */; };
+		DE57944624103B6700341DFC /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57944524103B6700341DFC /* Source.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,12 +45,13 @@
 		DE57942C2410267B00341DFC /* Endpointed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpointed.swift; sourceTree = "<group>"; };
 		DE57942E241026A000341DFC /* Dictionary+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
 		DE579432241026F400341DFC /* HTTPMethod+HTTPSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPMethod+HTTPSchema.swift"; sourceTree = "<group>"; };
-		DE5794342410273200341DFC /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		DE5794362410277500341DFC /* Error+code.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+code.swift"; sourceTree = "<group>"; };
 		DE579438241028D600341DFC /* BaseServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseServiceError.swift; sourceTree = "<group>"; };
 		DE57943C2410295700341DFC /* NewsAPIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIConstants.swift; sourceTree = "<group>"; };
 		DE57943E24102ED200341DFC /* NewsAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIService.swift; sourceTree = "<group>"; };
 		DE5794402410307C00341DFC /* NewsAPIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIEndpoints.swift; sourceTree = "<group>"; };
+		DE57944324103B3900341DFC /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		DE57944524103B6700341DFC /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		DE5794082410211C00341DFC /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				DE57944224103B0700341DFC /* Model */,
 				DE57943A2410292500341DFC /* RemoteDataSource */,
 				DE5794202410229200341DFC /* Library */,
 				DE5794092410211C00341DFC /* AppDelegate.swift */,
@@ -111,7 +114,6 @@
 				DE5794172410211E00341DFC /* LaunchScreen.storyboard */,
 				DE57941A2410211E00341DFC /* Info.plist */,
 				DE5794122410211C00341DFC /* NewsApp.xcdatamodeld */,
-				DE5794342410273200341DFC /* AppConstants.swift */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -154,6 +156,15 @@
 				DE57943E24102ED200341DFC /* NewsAPIService.swift */,
 			);
 			path = NewsAPIClient;
+			sourceTree = "<group>";
+		};
+		DE57944224103B0700341DFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE57944324103B3900341DFC /* Article.swift */,
+				DE57944524103B6700341DFC /* Source.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE57944424103B3900341DFC /* Article.swift in Sources */,
 				DE579422241022A400341DFC /* Storyboards.swift in Sources */,
 				DE579439241028D600341DFC /* BaseServiceError.swift in Sources */,
 				DE57942D2410267B00341DFC /* Endpointed.swift in Sources */,
@@ -278,12 +290,12 @@
 				DE57942B2410264300341DFC /* BaseAPIService.swift in Sources */,
 				DE57943D2410295700341DFC /* NewsAPIConstants.swift in Sources */,
 				DE57940A2410211C00341DFC /* AppDelegate.swift in Sources */,
+				DE57944624103B6700341DFC /* Source.swift in Sources */,
 				DE57942F241026A000341DFC /* Dictionary+Merge.swift in Sources */,
 				DE5794142410211C00341DFC /* NewsApp.xcdatamodeld in Sources */,
 				DE57943F24102ED200341DFC /* NewsAPIService.swift in Sources */,
 				DE5794412410307C00341DFC /* NewsAPIEndpoints.swift in Sources */,
 				DE579433241026F400341DFC /* HTTPMethod+HTTPSchema.swift in Sources */,
-				DE5794352410273200341DFC /* AppConstants.swift in Sources */,
 				DE5794372410277500341DFC /* Error+code.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
