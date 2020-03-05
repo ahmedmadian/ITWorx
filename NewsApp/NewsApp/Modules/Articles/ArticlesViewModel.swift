@@ -38,7 +38,7 @@ class ArticlesViewModel: ArticlesViewModelType, ArticlesViewModelInput, Articles
         self.articleSelected = PublishSubject<ArticleViewModel>().asObserver()
         
         self.data = viewLoaded.flatMapLatest({ _ -> Observable<[ArticleViewModel]> in
-            return self.articlesRepository.fetchTopHeadlines(country: "us", category: "sports").map { $0.map{ ArticleViewModel(article: $0) }}
+            return self.articlesRepository.fetchTopHeadlines(country: "eg", category: "sports").map { $0.map{ ArticleViewModel(article: $0) }}
         })
         
         _ = articleSelected.subscribe(onNext: {

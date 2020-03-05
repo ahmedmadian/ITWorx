@@ -46,6 +46,7 @@
 		DE5794762410947F00341DFC /* SavedItemsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794752410947F00341DFC /* SavedItemsRoute.swift */; };
 		DE5794792410959D00341DFC /* NewsFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794782410959D00341DFC /* NewsFeedCoordinator.swift */; };
 		DE57947B241097E000341DFC /* SavedItemsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57947A241097E000341DFC /* SavedItemsCoordinator.swift */; };
+		DE57947D2410A10D00341DFC /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57947C2410A10D00341DFC /* SettingsService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		DE5794752410947F00341DFC /* SavedItemsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemsRoute.swift; sourceTree = "<group>"; };
 		DE5794782410959D00341DFC /* NewsFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCoordinator.swift; sourceTree = "<group>"; };
 		DE57947A241097E000341DFC /* SavedItemsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemsCoordinator.swift; sourceTree = "<group>"; };
+		DE57947C2410A10D00341DFC /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				DE57945B2410632D00341DFC /* ArticlesLocalService.swift */,
+				DE57947C2410A10D00341DFC /* SettingsService.swift */,
 			);
 			path = LocalDataSource;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				DE579422241022A400341DFC /* Storyboards.swift in Sources */,
 				DE57947B241097E000341DFC /* SavedItemsCoordinator.swift in Sources */,
 				DE5794792410959D00341DFC /* NewsFeedCoordinator.swift in Sources */,
+				DE57947D2410A10D00341DFC /* SettingsService.swift in Sources */,
 				DE579439241028D600341DFC /* BaseServiceError.swift in Sources */,
 				DE57946524106C6300341DFC /* ArticleViewModel.swift in Sources */,
 				DE5794492410411500341DFC /* AppStartupRoute.swift in Sources */,

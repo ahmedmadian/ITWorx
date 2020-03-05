@@ -13,8 +13,18 @@ import SafariServices
 class AppStartupCoordinator: NavigationCoordinator<AppStartupRoute> {
     
     init() {
-        super.init(initialRoute: .home)
+        var initialRoute: AppStartupRoute = .onboarding
+        
+        if SettingsService.shared.launchedBefore {
+            initialRoute = .home
+        } else {
+            SettingsService.shared.launchedBefore = true
+            initialRoute = .onboarding
+        }
+        
+        super.init(initialRoute: initialRoute)
         self.rootViewController.navigationBar.isHidden = true
+        
     }
     
     override func prepareTransition(for route: AppStartupRoute) -> NavigationTransition {
@@ -25,5 +35,4 @@ class AppStartupCoordinator: NavigationCoordinator<AppStartupRoute> {
             return .push(UIViewController())
         }
     }
- 
 }
