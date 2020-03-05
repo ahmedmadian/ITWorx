@@ -16,11 +16,13 @@ class ArticleCell: UITableViewCell {
     @IBOutlet weak var headLineLabel: UILabel!
     @IBOutlet weak var puplishedDateLabel: UILabel!
     @IBOutlet weak var sourceNameLabel: UILabel!
-
+    @IBOutlet weak var tilteView: UIView!
+    
     // MARK: - Methods
     func configCellAppearnce(with viewModel: ArticleViewModel) {
-        posterImageView.makeRoundedCorners(with: 20)
+        posterImageView.makeRoundedCorners(with: 30)
         container.makeRoundedCorners(with: 20)
+        tilteView.makeRoundedCorners(with: 20)
         posterImageView.kf.setImage(with: URL.init(string: viewModel.posterImageURL ), options: [
             .scaleFactor(UIScreen.main.scale),
             .transition(.fade(1)),

@@ -99,6 +99,7 @@
                 <outlet property="posterImageView" destination="c17-rO-4i0" id="LJ4-Id-DRv"/>
                 <outlet property="puplishedDateLabel" destination="eEj-UL-alr" id="QLJ-ci-gYR"/>
                 <outlet property="sourceNameLabel" destination="RyH-8M-0bQ" id="f65-ld-phH"/>
+                <outlet property="tilteView" destination="VY5-Dd-nvq" id="t11-cm-ZFa"/>
             </connections>
             <point key="canvasLocation" x="150.72463768115944" y="171.09375"/>
         </tableViewCell>

@@ -40,6 +40,12 @@
 		DE5794672410723900341DFC /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794662410723900341DFC /* ArticlesViewModel.swift */; };
 		DE57946B2410735300341DFC /* ArticlesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57946A2410735300341DFC /* ArticlesRepository.swift */; };
 		DE57946D24108A8000341DFC /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57946C24108A8000341DFC /* DateConverter.swift */; };
+		DE5794702410931C00341DFC /* HomeRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57946F2410931C00341DFC /* HomeRoute.swift */; };
+		DE5794722410935A00341DFC /* HomeTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794712410935A00341DFC /* HomeTabCoordinator.swift */; };
+		DE579474241093F800341DFC /* NewsFeedRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE579473241093F800341DFC /* NewsFeedRoute.swift */; };
+		DE5794762410947F00341DFC /* SavedItemsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794752410947F00341DFC /* SavedItemsRoute.swift */; };
+		DE5794792410959D00341DFC /* NewsFeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794782410959D00341DFC /* NewsFeedCoordinator.swift */; };
+		DE57947B241097E000341DFC /* SavedItemsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57947A241097E000341DFC /* SavedItemsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +86,12 @@
 		DE5794662410723900341DFC /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
 		DE57946A2410735300341DFC /* ArticlesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesRepository.swift; sourceTree = "<group>"; };
 		DE57946C24108A8000341DFC /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		DE57946F2410931C00341DFC /* HomeRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRoute.swift; sourceTree = "<group>"; };
+		DE5794712410935A00341DFC /* HomeTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabCoordinator.swift; sourceTree = "<group>"; };
+		DE579473241093F800341DFC /* NewsFeedRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedRoute.swift; sourceTree = "<group>"; };
+		DE5794752410947F00341DFC /* SavedItemsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemsRoute.swift; sourceTree = "<group>"; };
+		DE5794782410959D00341DFC /* NewsFeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCoordinator.swift; sourceTree = "<group>"; };
+		DE57947A241097E000341DFC /* SavedItemsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedItemsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,8 +215,8 @@
 		DE579447241040FA00341DFC /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				DE5794482410411500341DFC /* AppStartupRoute.swift */,
-				DE57944A2410417D00341DFC /* AppStartupCoordinator.swift */,
+				DE57946E2410930300341DFC /* Routes */,
+				DE5794772410955C00341DFC /* Coordinators */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -279,6 +291,28 @@
 				DE57946A2410735300341DFC /* ArticlesRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		DE57946E2410930300341DFC /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				DE5794482410411500341DFC /* AppStartupRoute.swift */,
+				DE57946F2410931C00341DFC /* HomeRoute.swift */,
+				DE579473241093F800341DFC /* NewsFeedRoute.swift */,
+				DE5794752410947F00341DFC /* SavedItemsRoute.swift */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		DE5794772410955C00341DFC /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				DE57944A2410417D00341DFC /* AppStartupCoordinator.swift */,
+				DE5794712410935A00341DFC /* HomeTabCoordinator.swift */,
+				DE5794782410959D00341DFC /* NewsFeedCoordinator.swift */,
+				DE57947A241097E000341DFC /* SavedItemsCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,6 +434,8 @@
 				DE57946D24108A8000341DFC /* DateConverter.swift in Sources */,
 				DE57944424103B3900341DFC /* Article.swift in Sources */,
 				DE579422241022A400341DFC /* Storyboards.swift in Sources */,
+				DE57947B241097E000341DFC /* SavedItemsCoordinator.swift in Sources */,
+				DE5794792410959D00341DFC /* NewsFeedCoordinator.swift in Sources */,
 				DE579439241028D600341DFC /* BaseServiceError.swift in Sources */,
 				DE57946524106C6300341DFC /* ArticleViewModel.swift in Sources */,
 				DE5794492410411500341DFC /* AppStartupRoute.swift in Sources */,
@@ -409,6 +445,7 @@
 				DE57940A2410211C00341DFC /* AppDelegate.swift in Sources */,
 				DE57944624103B6700341DFC /* Source.swift in Sources */,
 				DE57945C2410632D00341DFC /* ArticlesLocalService.swift in Sources */,
+				DE5794762410947F00341DFC /* SavedItemsRoute.swift in Sources */,
 				DE57944D241043CC00341DFC /* BindableType.swift in Sources */,
 				DE57945E2410694200341DFC /* ArticlesViewController.swift in Sources */,
 				DE57945624104CEF00341DFC /* ArticlesWrapper.swift in Sources */,
@@ -419,8 +456,11 @@
 				DE5794412410307C00341DFC /* ArticlesRemoteServiceProtocol.swift in Sources */,
 				DE579433241026F400341DFC /* HTTPMethod+HTTPSchema.swift in Sources */,
 				DE579460241069A800341DFC /* ArticlesViewModelProtocols.swift in Sources */,
+				DE579474241093F800341DFC /* NewsFeedRoute.swift in Sources */,
 				DE57946B2410735300341DFC /* ArticlesRepository.swift in Sources */,
 				DE5794522410464200341DFC /* ArticleCell.swift in Sources */,
+				DE5794702410931C00341DFC /* HomeRoute.swift in Sources */,
+				DE5794722410935A00341DFC /* HomeTabCoordinator.swift in Sources */,
 				DE57944B2410417D00341DFC /* AppStartupCoordinator.swift in Sources */,
 				DE5794672410723900341DFC /* ArticlesViewModel.swift in Sources */,
 				DE5794372410277500341DFC /* Error+code.swift in Sources */,

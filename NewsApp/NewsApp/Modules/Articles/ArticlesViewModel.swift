@@ -20,10 +20,10 @@ class ArticlesViewModel: ArticlesViewModelType, ArticlesViewModelInput, Articles
     var data: Observable<[ArticleViewModel]>
     
     // MARK: - Dependancies
-    private var router: UnownedRouter<AppStartupRoute>
+    private var router: UnownedRouter<NewsFeedRoute>
     private let articlesRepository: ArticleRepository
     
-    init(router: UnownedRouter<AppStartupRoute>, articlesRepository: ArticleRepository) {
+    init(router: UnownedRouter<NewsFeedRoute>, articlesRepository: ArticleRepository) {
         
         /// Init Dependancies
         self.router = router
