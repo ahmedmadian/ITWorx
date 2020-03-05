@@ -40,6 +40,10 @@ class ArticlesViewController: UIViewController, BindableType {
                 cell.configCellAppearnce(with: data)
         }.disposed(by: disposeBag)
         
+        tableView.rx.modelSelected(ArticleViewModel.self)
+            .bind(to: viewModel.input.articleSelected)
+            .disposed(by: disposeBag)
+        
         
     }
     

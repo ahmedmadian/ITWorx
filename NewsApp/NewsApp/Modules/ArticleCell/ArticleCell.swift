@@ -28,7 +28,12 @@ class ArticleCell: UITableViewCell {
         ])
         self.headLineLabel.text = viewModel.headline
         self.sourceNameLabel.text = viewModel.sourceName
-        self.puplishedDateLabel.text = viewModel.date
+        self.puplishedDateLabel.text = formatDate(with: viewModel.date)
+    }
+    
+    private func formatDate(with stringDate: String) -> String {
+        let date = DateConvertor.shared.getConverted(dateString: stringDate, fromFormat: .yyyyMMddTHHmmssZ, toFormat: .MMMdyyyyhmma)
+        return date
     }
 
 }

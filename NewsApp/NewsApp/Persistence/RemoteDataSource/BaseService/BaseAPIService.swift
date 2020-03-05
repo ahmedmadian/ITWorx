@@ -28,7 +28,7 @@ extension BaseAPIServiceProtocol {
             switch response.result {
             case .success(let data):
                 do {
-                    print(String(bytes: data, encoding: .utf8))
+                    //print(String(bytes: data, encoding: .utf8))
                     let object = try JSONDecoder().decode(Model.self, from: data)
                     completionHandler(Swift.Result.success(object))
                 }

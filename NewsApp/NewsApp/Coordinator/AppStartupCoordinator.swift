@@ -8,6 +8,7 @@
 
 import Foundation
 import XCoordinator
+import SafariServices
 
 class AppStartupCoordinator: NavigationCoordinator<AppStartupRoute> {
     
@@ -25,6 +26,11 @@ class AppStartupCoordinator: NavigationCoordinator<AppStartupRoute> {
             viewController.bind(to: viewModel)
             
             return .push(viewController)
+            
+        case .safari(let url):
+            let svc = SFSafariViewController(url: url)
+            return .present(svc)
+            
         default:
             return .push(UIViewController())
         }

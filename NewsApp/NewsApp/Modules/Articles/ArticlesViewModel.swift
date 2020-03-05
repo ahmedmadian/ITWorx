@@ -13,8 +13,10 @@ import RxCocoa
 
 
 class ArticlesViewModel: ArticlesViewModelType, ArticlesViewModelInput, ArticlesViewModelOutput{
-    var viewLoaded: PublishSubject<Void>
     
+    var viewLoaded: PublishSubject<Void>
+    var articleSelected: PublishSubject<ArticleViewModel>
+      
     var data: Observable<[ArticleViewModel]>
     
     // MARK: - Dependancies
@@ -33,8 +35,16 @@ class ArticlesViewModel: ArticlesViewModelType, ArticlesViewModelInput, Articles
         let loadedData = BehaviorRelay<[ArticleViewModel]>(value: [])
         data = loadedData.asObservable()
         
+        self.articleSelected = PublishSubject<ArticleViewModel>().asObserver()
+        
         self.data = viewLoaded.flatMapLatest({ _ -> Observable<[ArticleViewModel]> in
             return self.articlesRepository.fetchTopHeadlines(country: "us", category: "sports").map { $0.map{ ArticleViewModel(article: $0) }}
+        })
+        
+        _ = articleSelected.subscribe(onNext: {
+            if let url = URL(string: $0.url) {
+                router.trigger(.safari(url: url))
+            }
         })
         
     }

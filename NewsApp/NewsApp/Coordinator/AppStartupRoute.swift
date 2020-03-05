@@ -12,5 +12,6 @@ import XCoordinator
 enum AppStartupRoute: Route {
     case onboarding
     case home
+    case safari(url: URL)
     case exit
 }

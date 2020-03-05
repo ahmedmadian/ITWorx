@@ -39,6 +39,7 @@
 		DE57946524106C6300341DFC /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57946424106C6300341DFC /* ArticleViewModel.swift */; };
 		DE5794672410723900341DFC /* ArticlesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794662410723900341DFC /* ArticlesViewModel.swift */; };
 		DE57946B2410735300341DFC /* ArticlesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57946A2410735300341DFC /* ArticlesRepository.swift */; };
+		DE57946D24108A8000341DFC /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE57946C24108A8000341DFC /* DateConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		DE57946424106C6300341DFC /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		DE5794662410723900341DFC /* ArticlesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesViewModel.swift; sourceTree = "<group>"; };
 		DE57946A2410735300341DFC /* ArticlesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesRepository.swift; sourceTree = "<group>"; };
+		DE57946C24108A8000341DFC /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				DE5794362410277500341DFC /* Error+code.swift */,
 				DE57944C241043CC00341DFC /* BindableType.swift */,
 				DE57946124106ABA00341DFC /* UIView+typeName.swift */,
+				DE57946C24108A8000341DFC /* DateConverter.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE57946D24108A8000341DFC /* DateConverter.swift in Sources */,
 				DE57944424103B3900341DFC /* Article.swift in Sources */,
 				DE579422241022A400341DFC /* Storyboards.swift in Sources */,
 				DE579439241028D600341DFC /* BaseServiceError.swift in Sources */,

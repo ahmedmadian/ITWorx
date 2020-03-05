@@ -14,6 +14,7 @@ import RxCocoa
 
 protocol ArticlesViewModelInput {
     var viewLoaded: PublishSubject<Void> { get }
+    var articleSelected: PublishSubject<ArticleViewModel> { get }
 }
 
 protocol ArticlesViewModelOutput {
