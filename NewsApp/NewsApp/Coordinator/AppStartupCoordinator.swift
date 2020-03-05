@@ -15,5 +15,19 @@ class AppStartupCoordinator: NavigationCoordinator<AppStartupRoute> {
         super.init(initialRoute: .home)
     }
     
+    ///manage modules transition
+    override func prepareTransition(for route: AppStartupRoute) -> NavigationTransition {
+        switch route {
+        case .home:
+            let articlesRepo = ArticlesDataRepository(remoteDataSource: ArticlesRemoteService.shared)
+            let viewModel = ArticlesViewModel(router: self.unownedRouter, articlesRepository: articlesRepo)
+            let viewController: ArticlesViewController = Storyboards.main.instantiate()!
+            viewController.bind(to: viewModel)
+            
+            return .push(viewController)
+        default:
+            return .push(UIViewController())
+        }
+    }
  
 }

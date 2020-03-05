@@ -11,12 +11,14 @@ import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
+    private let router = AppStartupCoordinator().strongRouter
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launche
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+        router.setRoot(for: window!)
         
         return true
     }
