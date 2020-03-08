@@ -8,8 +8,11 @@
 
 import UIKit
 import Kingfisher
+import RxSwift
+import RxCocoa
 
 class ArticleCell: UITableViewCell {
+    
     //MARK:- IBOutlet
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
@@ -17,9 +20,14 @@ class ArticleCell: UITableViewCell {
     @IBOutlet weak var puplishedDateLabel: UILabel!
     @IBOutlet weak var sourceNameLabel: UILabel!
     @IBOutlet weak var tilteView: UIView!
+    @IBOutlet weak var favouriteButton: UIButton!
+    
+    var viewModel: ArticleViewModel!
+    weak var delegate: FavoriteArticleDelegate?
     
     // MARK: - Methods
     func configCellAppearnce(with viewModel: ArticleViewModel) {
+         self.viewModel = viewModel
         posterImageView.makeRoundedCorners(with: 30)
         container.makeRoundedCorners(with: 20)
         tilteView.makeRoundedCorners(with: 20)
@@ -28,6 +36,12 @@ class ArticleCell: UITableViewCell {
             .transition(.fade(1)),
             .cacheOriginalImage,
         ])
+        
+        if viewModel.isFavoutie {
+            self.favouriteButton.setImage(UIImage(named: "saved"), for: .normal)
+        } else {
+            self.favouriteButton.setImage(UIImage(named: "save"), for: .normal)
+        }
         self.headLineLabel.text = viewModel.headline
         self.sourceNameLabel.text = viewModel.sourceName
         self.puplishedDateLabel.text = formatDate(with: viewModel.date)
@@ -38,4 +52,19 @@ class ArticleCell: UITableViewCell {
         return date
     }
 
+    @IBAction func didTapSave(_ sender: Any) {
+        viewModel.isFavoutie = !viewModel.isFavoutie
+        if viewModel.isFavoutie {
+            favouriteButton.setImage( UIImage(named: "saved"), for: .normal)
+            self.delegate?.saveArticle(model: self.viewModel)
+        } else {
+            favouriteButton.setImage(UIImage(named: "save"), for: .normal)
+            self.delegate?.removeArticle(model: self.viewModel)
+        }
+    }
+}
+
+protocol FavoriteArticleDelegate: class {
+    func saveArticle(model: ArticleViewModel)
+    func removeArticle(model: ArticleViewModel)
 }

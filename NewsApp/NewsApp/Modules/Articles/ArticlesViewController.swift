@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-class ArticlesViewController: UIViewController, BindableType {
+class ArticlesViewController: BaseViewController, BindableType {
     
     //MARK: Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -37,14 +37,25 @@ class ArticlesViewController: UIViewController, BindableType {
         viewModel.output.data
             .observeOn(MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: ArticleCell.typeName, cellType: ArticleCell.self)) { item, data, cell in
+                cell.delegate = self
                 cell.configCellAppearnce(with: data)
         }.disposed(by: disposeBag)
         
         tableView.rx.modelSelected(ArticleViewModel.self)
             .bind(to: viewModel.input.articleSelected)
             .disposed(by: disposeBag)
+        viewModel.output.loading.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { (isLoading) in
+            if isLoading {
+                self.showLoader()
+            } else {
+                self.hideLoader()
+            }
+        }).disposed(by: disposeBag)
         
-        
+        viewModel.output.errorMessage
+        .subscribe(onNext: {
+            self.showErrorMessage(text: $0)
+        }).disposed(by: disposeBag)
     }
     
     private func congifTableView() {
@@ -53,4 +64,17 @@ class ArticlesViewController: UIViewController, BindableType {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 350
     }
+}
+
+
+extension ArticlesViewController: FavoriteArticleDelegate {
+    func saveArticle(model: ArticleViewModel) {
+        viewModel.input.saveArticle.on(.next(model))
+    }
+    
+    func removeArticle(model: ArticleViewModel) {
+        viewModel.input.removeArticle.on(.next(model))
+    }
+    
+    
 }

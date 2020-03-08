@@ -60,6 +60,12 @@ extension Article: Persistable {
         entity.setValue(publishedAt, forKey: "publishedAt")
         entity.setValue(content, forKey: "content")
         entity.setValue(source, forKey: "source")
+        
+        do {
+            try entity.managedObjectContext?.save()
+        } catch let e {
+            print(e)
+        }
     }
     
     typealias T = NSManagedObject

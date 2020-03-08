@@ -15,6 +15,7 @@ class ArticleViewModel {
     let articleDescription: String
     let url: String
     let sourceName: String
+    var isFavoutie: Bool
     
     init(article: Article) {
         self.posterImageURL = article.urlToImage
@@ -24,5 +25,7 @@ class ArticleViewModel {
         self.articleDescription = article.articleDescription
         self.url = article.url
         self.sourceName = article.source.name
+        self.isFavoutie = false
     }
 }
+

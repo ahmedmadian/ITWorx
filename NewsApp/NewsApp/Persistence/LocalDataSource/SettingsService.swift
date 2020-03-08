@@ -23,7 +23,16 @@ class SettingsService {
         }
     }
     
-    var country: String? {
+    var countryName: String? {
+        get {
+            return defualts.string(forKey: COUNTRY_NAME)
+        }
+        set {
+            defualts.set(newValue, forKey: COUNTRY_NAME)
+        }
+    }
+    
+    var countryiso2: String? {
         get {
             return defualts.string(forKey: COUNTRY_ISO)
         }
@@ -32,8 +41,11 @@ class SettingsService {
         }
     }
     
-    // MARK: Settings Service Keys
+    
+    
+    // MARK:- Settings Service Keys
     private let LAUNCHED_BEFORE = "LanchedBefore"
-    private let COUNTRY_ISO = "CountrISO"
+    private let COUNTRY_NAME = "CountryName"
+    private let COUNTRY_ISO = "CountryISO2"
     
 }

@@ -15,7 +15,7 @@ protocol ArticleRepository {
 
 class ArticlesDataRepository: ArticleRepository{
     
-    
+
     //MARK:- Properties
     private let remoteDataSource: ArticlesRemoteServiceProtocol
     

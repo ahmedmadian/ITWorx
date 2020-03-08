@@ -19,7 +19,7 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
     
     // MARK: Stored properties
     private let newsFeedRouter: StrongRouter<NewsFeedRoute>
-    private let savedItemRouter: StrongRouter<SavedItemsRoute>
+    private let favouritesRouter: StrongRouter<FavouritesRoute>
     
 
     // MARK: Initialization
@@ -28,17 +28,17 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
         let newsFeedCoordinator = NewsFeedCoordinator()
         newsFeedCoordinator.rootViewController.tabBarItem = HomeTabCoordinator.getTabBarItem(image: UIImage(named: "news"), tag: 0)
         
-        let savedItemsCoordinator = SavedItemsCoordinator()
-        savedItemsCoordinator.rootViewController.tabBarItem = HomeTabCoordinator.getTabBarItem(image: UIImage(named: "star"), tag: 0)
+        let favouritesCoordinator = FavouritesCoordinator()
+        favouritesCoordinator.rootViewController.tabBarItem = HomeTabCoordinator.getTabBarItem(image: UIImage(named: "star"), tag: 0)
 
-        self.init(newsFeedRouter: newsFeedCoordinator.strongRouter, savedItemRouter: savedItemsCoordinator.strongRouter )
+        self.init(newsFeedRouter: newsFeedCoordinator.strongRouter, favourotiesRouter: favouritesCoordinator.strongRouter )
     }
 
-    init(newsFeedRouter: StrongRouter<NewsFeedRoute>, savedItemRouter: StrongRouter<SavedItemsRoute>) {
-        self.savedItemRouter = savedItemRouter
+    init(newsFeedRouter: StrongRouter<NewsFeedRoute>, favourotiesRouter: StrongRouter<FavouritesRoute>) {
+        self.favouritesRouter = favourotiesRouter
         self.newsFeedRouter = newsFeedRouter
         
-        super.init(tabs: [newsFeedRouter, savedItemRouter], select: newsFeedRouter)
+        super.init(tabs: [newsFeedRouter, favourotiesRouter], select: newsFeedRouter)
     }
     
     static func getTabBarItem(image: UIImage?, tag: Int) -> UITabBarItem {

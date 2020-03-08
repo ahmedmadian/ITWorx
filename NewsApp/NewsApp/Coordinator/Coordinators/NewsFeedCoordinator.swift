@@ -20,7 +20,8 @@ class NewsFeedCoordinator: NavigationCoordinator<NewsFeedRoute> {
         switch route {
         case .feedList:
             let articlesRepo = ArticlesDataRepository(remoteDataSource: ArticlesRemoteService.shared)
-            let viewModel = ArticlesViewModel(router: self.unownedRouter, articlesRepository: articlesRepo)
+            let favoritsRepo = FavouritesRepository(localDataSource: FavouritesLocalService(context: CoreDataManager.shared.managedContext))
+            let viewModel = ArticlesViewModel(router: self.unownedRouter, articlesRepository: articlesRepo, favoritesRepository: favoritsRepo)
             let viewController: ArticlesViewController = Storyboards.main.instantiate()!
             viewController.bind(to: viewModel)
             

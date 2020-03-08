@@ -12,6 +12,9 @@ PODS:
   - RxRelay (5.0.1):
     - RxSwift (~> 5)
   - RxSwift (5.0.1)
+  - SwiftMessages (7.0.1):
+    - SwiftMessages/App (= 7.0.1)
+  - SwiftMessages/App (7.0.1)
   - XCoordinator (2.0.6):
     - XCoordinator/Core (= 2.0.6)
   - XCoordinator/Core (2.0.6)
@@ -22,6 +25,7 @@ DEPENDENCIES:
   - RxCocoa
   - RxCoreData
   - RxSwift
+  - SwiftMessages
   - XCoordinator
 
 SPEC REPOS:
@@ -32,6 +36,7 @@ SPEC REPOS:
     - RxCoreData
     - RxRelay
     - RxSwift
+    - SwiftMessages
     - XCoordinator
 
 SPEC CHECKSUMS:
@@ -41,8 +46,9 @@ SPEC CHECKSUMS:
   RxCoreData: 1ed5f83e80facccc90fc054eb7f39a44177de56a
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  SwiftMessages: b577dc7043be8b299857ab35bb663dbff6483bd0
   XCoordinator: 67772bf463acec002a920ab5eb04f46835dcf123
 
-PODFILE CHECKSUM: f0173ef37c8d7583c8cf638b606d09306f98fbd5
+PODFILE CHECKSUM: 174b4ef6136fa7ccc5d2f0f2597a3bb126229695
 
 COCOAPODS: 1.8.4

@@ -1,5 +1,5 @@
 //
-//  SavedItemsCoordinator.swift
+//  SavedItemsRoute.swift
 //  NewsApp
 //
 //  Created by Ahmed Madian on 3/5/20.
@@ -9,6 +9,7 @@
 import Foundation
 import XCoordinator
 
-class SavedItemsCoordinator: NavigationCoordinator<SavedItemsRoute> {
-    
+enum FavouritesRoute: Route {
+    case favouritesList
+    case safari(url: URL)
 }

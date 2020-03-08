@@ -33,6 +33,12 @@ extension Source: Persistable {
     
     func update(_ entity: NSManagedObject) {
         entity.setValue(name, forKey: "name")
+        
+        do {
+            try entity.managedObjectContext?.save()
+        } catch let e {
+            print(e)
+        }
     }
     
     typealias T = NSManagedObject

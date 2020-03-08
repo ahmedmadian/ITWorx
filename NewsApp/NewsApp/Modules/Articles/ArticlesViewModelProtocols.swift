@@ -7,18 +7,20 @@
 //
 
 import Foundation
-
-import Foundation
 import RxSwift
 import RxCocoa
 
 protocol ArticlesViewModelInput {
     var viewLoaded: PublishSubject<Void> { get }
     var articleSelected: PublishSubject<ArticleViewModel> { get }
+    var saveArticle: PublishSubject<ArticleViewModel> { get }
+    var removeArticle: PublishSubject<ArticleViewModel> { get }
 }
 
 protocol ArticlesViewModelOutput {
     var data: Observable<[ArticleViewModel]> {get}
+    var loading: Observable<Bool> { get }
+    var errorMessage: PublishSubject<String> { get }
 }
 
 protocol ArticlesViewModelType {
