@@ -14,7 +14,6 @@ protocol CountriesViewModelInput {
     var viewLoaded: PublishSubject<Void> { get }
     var selectedCountry: PublishSubject<CountryViewModel> { get }
     var deselectedCountry: PublishSubject<CountryViewModel> { get }
-    var didTapNext: PublishSubject<Void> { get }
 }
 
 protocol CountriesViewModelOutput {

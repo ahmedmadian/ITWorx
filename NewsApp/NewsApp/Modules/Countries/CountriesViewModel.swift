@@ -13,35 +13,34 @@ import RxCocoa
 
 class CountriesViewModel: CountriesViewModelType, CountriesViewModelInput, CountriesViewModelOutput {
     
-    
-    
+    // MARK:- INPUTS
     var viewLoaded: PublishSubject<Void>
     var selectedCountry: PublishSubject<CountryViewModel>
     var deselectedCountry: PublishSubject<CountryViewModel>
-    var didTapNext: PublishSubject<Void>
-    var errorMessage: PublishSubject<String>
     
+    // MARK:- OUTPUTS
+    var errorMessage: PublishSubject<String>
     var data: Observable<[CountryViewModel]>
 
     private var itemSelected = false
     
-    // MARK: - Dependancies
+    // MARK: - DEPENDENCIES
     private let countreyService: CountryServiceProtocol
     private let settingsRouter: UnownedRouter<SettingsRoute>?
     
     init(settingsRouter: UnownedRouter<SettingsRoute>?, countreyService: CountryServiceProtocol){
+        
+        /// init DEPENDENCIES
         self.countreyService = countreyService
         self.settingsRouter = settingsRouter
         
-        /// Init Inputs
+        /// init INPUTS
         self.viewLoaded = PublishSubject<Void>().asObserver()
         self.selectedCountry = PublishSubject<CountryViewModel>().asObserver()
         self.deselectedCountry = PublishSubject<CountryViewModel>().asObserver()
-        self.didTapNext = PublishSubject<Void>().asObserver()
         
-        let loadedData = BehaviorRelay<[CountryViewModel]>(value: [])
-        data = loadedData.asObservable()
-        
+        /// init OUTPUTS
+        data = Observable.empty()
         errorMessage = PublishSubject<String>()
         
         self.data = viewLoaded.flatMapLatest( { _ -> Observable<[CountryViewModel]> in
@@ -68,17 +67,6 @@ class CountriesViewModel: CountriesViewModelType, CountriesViewModelInput, Count
         _ = deselectedCountry.subscribe(onNext: {
             self.itemSelected = false
             $0.isSelected.accept(!$0.isSelected.value)
-        })
-        
-        
-        _ = didTapNext.subscribe(onNext: {
-            if self.itemSelected {
-                if let sRouter = self.settingsRouter {
-                    sRouter.trigger(.exit)
-                }
-            } else {
-                self.errorMessage.onNext("PLEASE SELECT COUNTRY")
-            }
         })
     }
 }

@@ -12,29 +12,32 @@ import RxCocoa
 
 class CountryCell: UICollectionViewCell, BindableType{
     
+    // MARK: - OUTLET
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
  
-    // MARK: - Depenencies
+    // MARK: - DEPENDENCIES
     var viewModel: CountryViewModelType!
     private let disposeBag = DisposeBag()
 
-    // MARK: - LifeCycle
+    // MARK: - LIFECYCLE
     override func awakeFromNib() {
         super.awakeFromNib()
         configCellAppearnce()
     }
     
-    
-    // MARK: - Methods
+    // MARK: - METHODS
     func bindViewModel() {
+        
+        /// Output
         titleLabel.text = viewModel.output.title
         viewModel.output.isSelected.subscribe(onNext: {
             self.borderView.isHidden = !$0
         }).disposed(by: disposeBag)
+        
     }
     
     private func configCellAppearnce() {

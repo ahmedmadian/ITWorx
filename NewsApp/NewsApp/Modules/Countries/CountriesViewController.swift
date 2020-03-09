@@ -12,45 +12,43 @@ import RxSwift
 
 class CountriesViewController: BaseViewController, BindableType {
 
+    // MARK: - OUTLET
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var nextButton: UIButton!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureCollectionView()
-        if navigationController == nil {
-            self.nextButton.isHidden = true
-        }
-    }
-    
-    // MARK: - Dependencies
+    // MARK: - DEPENDENCIES
        var viewModel: CountriesViewModelType!
        private let disposeBag = DisposeBag()
     
-    // MARK: - Method
+    // MARK: - LIFE CYCLE
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureCollectionView()
+    }
+    
+    // MARK: - METHOD
     func bindViewModel() {
-        //Inputs
+        
+        /// INPUTS
         rx.sentMessage(#selector(UIViewController.viewDidAppear(_:)))
             .take(1)
             .map { _ in }
             .bind(to: viewModel.input.viewLoaded)
             .disposed(by: disposeBag)
         
+        collectionView.rx.modelSelected(CountryViewModel.self)
+        .bind(to: viewModel.input.selectedCountry)
+        .disposed(by: disposeBag)
+        
+        collectionView.rx.modelDeselected(CountryViewModel.self)
+        .bind(to: viewModel.input.deselectedCountry)
+        .disposed(by: disposeBag)
+        
+        /// OUTPUTS
         viewModel.output.data
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: CountryCell.typeName, cellType: CountryCell.self)) { item, data, cell in
                 cell.bind(to: data)
         }.disposed(by: disposeBag)
-        
-        collectionView.rx.modelSelected(CountryViewModel.self)
-            .bind(to: viewModel.input.selectedCountry)
-            .disposed(by: disposeBag)
-        
-        collectionView.rx.modelDeselected(CountryViewModel.self)
-            .bind(to: viewModel.input.deselectedCountry)
-            .disposed(by: disposeBag)
-        
-        nextButton.rx.tap.bind(to: viewModel.input.didTapNext).disposed(by: disposeBag)
         
         viewModel.output.errorMessage
         .subscribe(onNext: {

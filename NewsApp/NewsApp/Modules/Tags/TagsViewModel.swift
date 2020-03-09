@@ -13,61 +13,42 @@ import XCoordinator
 
 class TagsViewModel: TagsViewModelType, TagsViewModelInput, TagsViewModelOutput {
     
+    // MARK: - INPUTS
     var viewLoaded: PublishSubject<Void>
     var didTapDone: PublishSubject<Void>
     var selectCategory: PublishSubject<TagViewModel>
 
+    // MARK: - OUTPUTS
     var data: Observable<[TagViewModel]>
     var errorMessage: PublishSubject<String>
     
-    // MARK: - Dependancies
+    // MARK: - DEPENDENCIES
        private let startupRouter: UnownedRouter<AppStartupRoute>?
        private let settingsRouter: UnownedRouter<SettingsRoute>?
     
     init(startupRouter: UnownedRouter<AppStartupRoute>?, settingsRouter: UnownedRouter<SettingsRoute>?) {
         
+        /// init DEPENDENCIES
         self.startupRouter = startupRouter
         self.settingsRouter = settingsRouter
         
+        /// init INPUTS
         viewLoaded = PublishSubject<Void>().asObserver()
         self.didTapDone = PublishSubject<Void>().asObserver()
         self.selectCategory = PublishSubject<TagViewModel>().asObserver()
         
+        /// init OUTPUTS
         errorMessage = PublishSubject<String>()
-        
-       // let loadedData = Tag.dummyTags().map{TagViewModel(with: $0)}
-        
-        //self.data = Observable.of(loadedData)
-//        self.data = viewLoaded.flatMapLatest({ _ -> Observable<[TagViewModel]> in
-//            let res = Tag.dummyTags().map {$0.map {TagViewModel(with: $0)}}
-//            return res
-//        })
-        
         let loadedData = Tag.dummyTags().map { tag -> TagViewModel in
             let items = Settings.shared.categories
             let viewModel = TagViewModel(with: tag)
             viewModel.isSelected.accept(items?.contains(tag.name) ?? false)
             return viewModel
         }
-        
         self.data = Observable.of(loadedData)
-        
-//        self.data = viewLoaded.flatMapLatest({ _ -> Observable<[TagViewModel]> in
-//            let items = Settings.shared.categories
-//            let res = Tag.dummyTags().map { tag -> TagViewModel in
-//                let viewModel = TagViewModel(with: tag)
-//                viewModel.isSelected.accept(items?.contains(tag.name) ?? false)
-//                return viewModel
-//            }
-//            return Observable.of(res)
-//        })
-        
-        
         
         _ = selectCategory.subscribe(onNext: {
             $0.isSelected.accept(!$0.isSelected.value)
-            //if (Settings.shared.categories?.contains($0.title) ?? false) { return}
-            //Settings.shared.categories?.append($0.title)
         })
         
         _ = didTapDone.subscribe(onNext: {

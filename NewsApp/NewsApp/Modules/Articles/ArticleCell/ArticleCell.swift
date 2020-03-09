@@ -13,7 +13,7 @@ import RxCocoa
 
 class ArticleCell: UITableViewCell {
     
-    //MARK:- IBOutlet
+    //MARK:- OUTLET
     @IBOutlet weak var container: UIView!
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var headLineLabel: UILabel!
@@ -22,7 +22,7 @@ class ArticleCell: UITableViewCell {
     @IBOutlet weak var tilteView: UIView!
     @IBOutlet weak var favouriteButton: UIButton!
     
-    var viewModel: ArticleViewModel!
+    weak var viewModel: ArticleViewModel!
     weak var delegate: FavoriteArticleDelegate?
     
     // MARK: - Methods
@@ -52,6 +52,7 @@ class ArticleCell: UITableViewCell {
         return date
     }
 
+    //MARK:- ACTION
     @IBAction func didTapSave(_ sender: Any) {
         viewModel.isFavoutie = !viewModel.isFavoutie
         if viewModel.isFavoutie {

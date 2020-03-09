@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 class TagViewModel: TagViewModelType, TagViewModelInput, TagViewModelOutput {
-   
     
     var title: String
     var isSelected: BehaviorRelay<Bool>

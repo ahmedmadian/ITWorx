@@ -12,30 +12,33 @@ import RxCocoa
 
 class TagCell: UICollectionViewCell, BindableType {
     
+    // MARK: OUTLETS
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var borderView: UIView!
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
-    // MARK: - Depenencies
+    // MARK: - DEPENDENCIES
     var viewModel: TagViewModelType!
     private let disposeBag = DisposeBag()
     
-    // MARK: - LifeCycle
+    // MARK: - LIFECYCLE
     override func awakeFromNib() {
         super.awakeFromNib()
         configCellAppearnce()
     }
     
-    // MARK: - Methods
+    // MARK: - METHODS
     func bindViewModel() {
-        titleLabel.text = viewModel.output.title
         
+        /// OUTPUT
+        titleLabel.text = viewModel.output.title
         viewModel.output.isSelected.subscribe(onNext: {
             print($0)
             self.borderView.isHidden = !$0
         }).disposed(by: disposeBag)
+        
     }
     
     private func configCellAppearnce() {

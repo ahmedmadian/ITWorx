@@ -17,7 +17,7 @@ protocol TagsViewModelInput {
 }
 
 protocol TagsViewModelOutput {
-     var data: Observable<[TagViewModel]> {get}
+    var data: Observable<[TagViewModel]> {get}
     var errorMessage: PublishSubject<String> {get}
 }
 

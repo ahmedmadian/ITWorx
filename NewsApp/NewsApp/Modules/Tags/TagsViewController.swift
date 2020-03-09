@@ -11,44 +11,51 @@ import RxSwift
 import RxCocoa
 
 class TagsViewController: BaseViewController, BindableType {
-
+    
+    // MARK: OUTLETS
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var doneButton: UIButton!
     
+    // MARK: - DEPENDENCIES
+    var viewModel: TagsViewModelType!
+    private let disposeBag = DisposeBag()
+    
+    // MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
     }
     
-    // MARK: - Dependencies
-       var viewModel: TagsViewModelType!
-       private let disposeBag = DisposeBag()
-    
-    // MARK: - Method
+    // MARK: - METHODS
     func bindViewModel() {
-        //Inputs
+        
+        /// INPUTS
         rx.sentMessage(#selector(UIViewController.viewDidAppear(_:)))
             .take(1)
             .map { _ in }
             .bind(to: viewModel.input.viewLoaded)
             .disposed(by: disposeBag)
         
+         doneButton.rx.tap
+            .bind(to: viewModel.input.didTapDone)
+            .disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(TagViewModel.self)
+        .bind(to: viewModel.input.selectCategory)
+        .disposed(by: disposeBag)
+        
+        /// OUTPUTS
         viewModel.output.data
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: TagCell.typeName, cellType: TagCell.self)) { item, data, cell in
                 cell.bind(to: data)
         }.disposed(by: disposeBag)
         
-        doneButton.rx.tap.bind(to: viewModel.input.didTapDone).disposed(by: disposeBag)
-        
         viewModel.output.errorMessage
         .subscribe(onNext: {
             self.showErrorMessage(text: $0)
         }).disposed(by: disposeBag)
         
-        collectionView.rx.modelSelected(TagViewModel.self)
-        .bind(to: viewModel.input.selectCategory)
-        .disposed(by: disposeBag)
     }
     
     private func registerCell() {

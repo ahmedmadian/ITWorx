@@ -9,9 +9,7 @@
 import Foundation
 
 struct NewsAPIConstants {
-    
-    static let defaultBaseUrl = "http://blinkappservices.com"
-    
+        
     struct HeaderParameterKeys {
         static let APIKey = "X-Api-Key"
     }

@@ -14,72 +14,67 @@ import CoreData
 
 class ArticlesViewModel: ArticlesViewModelType, ArticlesViewModelInput, ArticlesViewModelOutput{
     
+    //MARK:- INPUT
     var viewLoaded: PublishSubject<Void>
     var articleSelected: PublishSubject<ArticleViewModel>
     var saveArticle: PublishSubject<ArticleViewModel>
     var removeArticle: PublishSubject<ArticleViewModel>
     
+    //MARK:- OUTPUT
     var data: Observable<[ArticleViewModel]>
     var loading: Observable<Bool>
     var errorMessage: PublishSubject<String>
     var title: Observable<String>
     
-    // MARK: - Dependancies
+    // MARK: - DEPENDENCIES
     private var router: UnownedRouter<NewsFeedRoute>
     private let articlesRepository: ArticleRepository
     private let favoritesRepository: FavouritesRepositoryProtocol
     
     init(router: UnownedRouter<NewsFeedRoute>, articlesRepository: ArticleRepository, favoritesRepository: FavouritesRepositoryProtocol) {
         
-        /// Init Dependancies
+        /// init DEPENDENCIES
         self.router = router
         self.articlesRepository = articlesRepository
         self.favoritesRepository = favoritesRepository
         
-        /// Init Inputs
+        /// init INPUT
         self.viewLoaded = PublishSubject<Void>().asObserver()
         self.articleSelected = PublishSubject<ArticleViewModel>().asObserver()
-        saveArticle = PublishSubject<ArticleViewModel>().asObserver()
-        removeArticle = PublishSubject<ArticleViewModel>().asObserver()
+        self.saveArticle = PublishSubject<ArticleViewModel>().asObserver()
+        self.removeArticle = PublishSubject<ArticleViewModel>().asObserver()
         
-        ///Init Output
+        ///init OUTPUT
         data = Observable.empty()
         self.title = Observable.empty()
+        
         let activityIndicator = ActivityIndicator()
         loading = activityIndicator.asObservable()
+        
         errorMessage = PublishSubject<String>()
+
+        /// RequestGroup
+        let firstCategory = viewLoaded.flatMapLatest({ _ -> Observable<[Article]> in
+            return self.articlesRepository.fetchTopHeadlines(country: Settings.shared.countryiso2!, category: Settings.shared.categories![0])
+        }).trackActivity(activityIndicator)
         
-        
-//        let categoryOne = viewLoaded.flatMapLatest({ _ -> Observable<[ArticleViewModel]> in
-//            let items = Favourite.getAllSortedByDate(context: CoreDataManager.shared.managedContext)
-//            return self.articlesRepository.fetchTopHeadlines(country: Settings.shared.countryiso2!, category: Settings.shared.categories[0]).map{ $0.map {ArticleViewModel(article: $0)}}
-//        })
-//
-//        let categoryTwo = viewLoaded.flatMapLatest({ _ -> Observable<[ArticleViewModel]> in
-//            return self.articlesRepository.fetchTopHeadlines(country: Settings.shared.countryiso2!, category: Settings.shared.categories[1]).map{ $0.map {ArticleViewModel(article: $0)}}
-//        })
-//
-//        let categoryThree = viewLoaded.flatMapLatest({ _ -> Observable<[ArticleViewModel]> in
-//            return self.articlesRepository.fetchTopHeadlines(country: Settings.shared.countryiso2!, category: Settings.shared.categories[2]).map{ $0.map {ArticleViewModel(article: $0)}}
-//        })
-        
-        
-        //self.data = Observable.combineLatest(categoryOne, categoryTwo, categoryThree)
-            //.trackActivity(activityIndicator)
+        let secondCategory = viewLoaded.flatMapLatest({ _ -> Observable<[Article]> in
+            return self.articlesRepository.fetchTopHeadlines(country: Settings.shared.countryiso2!, category: Settings.shared.categories![0])
+        }).trackActivity(activityIndicator)
             
-        
-        
-      
-        
-        
-        self.data = viewLoaded.flatMapLatest({ _ -> Observable<[ArticleViewModel]> in
+        let thirdCategory = viewLoaded.flatMapLatest({ _ -> Observable<[Article]> in
+            return self.articlesRepository.fetchTopHeadlines(country: Settings.shared.countryiso2!, category: Settings.shared.categories![1])
+        }).trackActivity(activityIndicator)
+
+        self.data = Observable.combineLatest(firstCategory, secondCategory, thirdCategory){ one,two,three  in
             let items = Favourite.getAllSortedByDate(context: CoreDataManager.shared.managedContext)
-            let res = self.articlesRepository.fetchTopHeadlines(country: Settings.shared.countryiso2!, category: "sports").map { $0.map{ article -> ArticleViewModel in
+            let res =  (one + two + three).map { (article) -> ArticleViewModel in
                 let viewModel = ArticleViewModel(article: article)
-                viewModel.isFavoutie = items.contains{ $0.url == viewModel.url }
-                return viewModel }}
+                viewModel.isFavoutie = items.contains{ $0.url == viewModel.url}
+                return viewModel
+            }
             return res
-        }).catchError{ error in
+        }.catchError{ error in
             self.errorMessage.onNext(error.localizedDescription)
             return Observable.empty()
         }.trackActivity(activityIndicator)
@@ -89,18 +84,18 @@ class ArticlesViewModel: ArticlesViewModelType, ArticlesViewModelInput, Articles
             return Observable.just(Settings.shared.countryName!)
         })
         
-        _ = articleSelected.subscribe(onNext: {
-            if let url = URL(string: $0.url) {
-                router.trigger(.safari(url: url))
-            }
-        })
-        
         _ = saveArticle.subscribe(onNext: {
             self.favoritesRepository.addToFavourites(imageURL: $0.posterImageURL, title: $0.headline, url: $0.url, date: Date())
             })
         
         _ = removeArticle.subscribe(onNext: {
             self.favoritesRepository.remove(url: $0.url)
+        })
+        
+        _ = articleSelected.subscribe(onNext: {
+            if let url = URL(string: $0.url) {
+                router.trigger(.safari(url: url))
+            }
         })
         
     }

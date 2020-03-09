@@ -13,24 +13,30 @@ import RxCocoa
 
 class SettingsViewModel: SettingsViewModelType, SettingsViewModelInput, SettingsViewModelOutput {
     
+    // MARK: - INPUTS
     var viewLoaded: PublishSubject<Void>
     var didTapEditCountry: PublishSubject<Void>
     var didTapEditCategory: PublishSubject<Void>
     
+    // MARK: - OUTPUTS
     var title: Observable<String>
     var selectedCountry: Observable<String>
     var prefrences: Observable<String>
     
-    // MARK: - Dependancies
+    // MARK: - DEPENDENCIES
     private let router: UnownedRouter<SettingsRoute>
     
     init(router: UnownedRouter<SettingsRoute>) {
+        
+        /// init DEPENDENCIES
         self.router = router
         
+        /// init INPUTS
         self.viewLoaded = PublishSubject<Void>().asObserver()
         didTapEditCountry = PublishSubject<Void>().asObserver()
         didTapEditCategory = PublishSubject<Void>().asObserver()
 
+        /// init OUTPUTS
         self.title = Observable.just("Settings")
         
         self.selectedCountry = viewLoaded.flatMapLatest({_ -> Observable<String> in

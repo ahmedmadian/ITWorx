@@ -140,7 +140,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bea-J9-IQz">
-                                <rect key="frame" x="20" y="74" width="303" height="38.5"/>
+                                <rect key="frame" x="20" y="74" width="374" height="38.5"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="33"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -156,30 +156,21 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obS-rC-4IB">
-                                <rect key="frame" x="343" y="52" width="51" height="82.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="Done"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Bea-J9-IQz" firstAttribute="leading" secondItem="bie-cm-tNY" secondAttribute="leading" constant="20" id="6gp-6g-HAy"/>
                             <constraint firstItem="bie-cm-tNY" firstAttribute="bottom" secondItem="gpM-Si-kOr" secondAttribute="bottom" id="C2g-Db-KDt"/>
-                            <constraint firstItem="obS-rC-4IB" firstAttribute="centerY" secondItem="Bea-J9-IQz" secondAttribute="centerY" id="Hay-a9-SNy"/>
                             <constraint firstItem="gpM-Si-kOr" firstAttribute="top" secondItem="Bea-J9-IQz" secondAttribute="bottom" constant="30" id="JOE-A8-Ae3"/>
                             <constraint firstItem="Bea-J9-IQz" firstAttribute="top" secondItem="bie-cm-tNY" secondAttribute="top" constant="30" id="KOk-dx-jZx"/>
                             <constraint firstItem="bie-cm-tNY" firstAttribute="trailing" secondItem="gpM-Si-kOr" secondAttribute="trailing" constant="8" id="Tca-gC-R6X"/>
                             <constraint firstItem="gpM-Si-kOr" firstAttribute="leading" secondItem="bie-cm-tNY" secondAttribute="leading" constant="8" id="ade-bc-LeL"/>
-                            <constraint firstItem="obS-rC-4IB" firstAttribute="top" secondItem="bie-cm-tNY" secondAttribute="top" constant="8" id="cSU-Wr-mHN"/>
-                            <constraint firstItem="bie-cm-tNY" firstAttribute="trailing" secondItem="obS-rC-4IB" secondAttribute="trailing" constant="20" id="hw2-o4-kcP"/>
-                            <constraint firstItem="obS-rC-4IB" firstAttribute="leading" secondItem="Bea-J9-IQz" secondAttribute="trailing" constant="20" id="nmX-YA-Odn"/>
+                            <constraint firstItem="bie-cm-tNY" firstAttribute="trailing" secondItem="Bea-J9-IQz" secondAttribute="trailing" constant="20" id="bGX-Cq-2p0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bie-cm-tNY"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="gpM-Si-kOr" id="ANb-gX-5Jq"/>
-                        <outlet property="nextButton" destination="obS-rC-4IB" id="fL3-GL-wed"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zyw-Gw-aih" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

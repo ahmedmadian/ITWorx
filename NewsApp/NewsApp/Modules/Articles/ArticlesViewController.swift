@@ -12,13 +12,14 @@ import RxSwift
 
 class ArticlesViewController: BaseViewController, BindableType {
     
-    //MARK: Outlets
+    //MARK: OUTLET
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Dependencies
     var viewModel: ArticlesViewModelType!
     private let disposeBag = DisposeBag()
     
+    // MARK:- LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         congifTableView()
@@ -33,16 +34,18 @@ class ArticlesViewController: BaseViewController, BindableType {
             .bind(to: viewModel.input.viewLoaded)
             .disposed(by: disposeBag)
         
+        tableView.rx.modelSelected(ArticleViewModel.self)
+                   .bind(to: viewModel.input.articleSelected)
+                   .disposed(by: disposeBag)
+        
+        /// Output
         viewModel.output.data
             .observeOn(MainScheduler.instance)
+            .do(onNext: {print($0)})
             .bind(to: tableView.rx.items(cellIdentifier: ArticleCell.typeName, cellType: ArticleCell.self)) { item, data, cell in
                 cell.delegate = self
                 cell.configCellAppearnce(with: data)
         }.disposed(by: disposeBag)
-        
-        tableView.rx.modelSelected(ArticleViewModel.self)
-            .bind(to: viewModel.input.articleSelected)
-            .disposed(by: disposeBag)
         
         viewModel.output.loading.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { (isLoading) in
             if isLoading {
