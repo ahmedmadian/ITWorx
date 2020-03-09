@@ -28,12 +28,11 @@ extension BaseAPIServiceProtocol {
             switch response.result {
             case .success(let data):
                 do {
-                    print(String(bytes: data, encoding: .utf8))
                     let object = try JSONDecoder().decode(Model.self, from: data)
                     completionHandler(Swift.Result.success(object))
                 }
                 catch {
-                    completionHandler(Swift.Result.failure(BaseServiceError.parsingError))
+                     completionHandler(Swift.Result.failure(BaseServiceError.parsingError))
                 }
             case .failure(let error):
                 completionHandler(Swift.Result.failure(BaseServiceError.serverError(message: error.localizedDescription, code: error.code)))

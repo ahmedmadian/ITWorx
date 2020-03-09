@@ -15,27 +15,24 @@ class AppStartupCoordinator: NavigationCoordinator<AppStartupRoute> {
     init() {
         var initialRoute: AppStartupRoute = .onboarding
         
-//        if SettingsService.shared.launchedBefore {
-//            initialRoute = .home
-//        } else {
-//            SettingsService.shared.launchedBefore = true
-//            initialRoute = .onboarding
-//        }
+        if Settings.shared.launchedBefore {
+            initialRoute = .home
+        } else {
+            Settings.shared.launchedBefore = true
+            initialRoute = .onboarding
+        }
         
         super.init(initialRoute: initialRoute)
         self.rootViewController.navigationBar.isHidden = true
-        
     }
     
     override func prepareTransition(for route: AppStartupRoute) -> NavigationTransition {
         switch route {
         case .home:
-            return .push(HomeTabCoordinator())
+            return .presentFullScreen(HomeTabCoordinator())
         case .onboarding:
-            let viewModel = CountriesViewModel(router: self.unownedRouter, countreyService: CountryService.shared)
-            let controller: CountriesViewController = Storyboards.main.instantiate()!
-            controller.bind(to: viewModel)
-            return .push(controller)
+            return .presentFullScreen(OnBordingCoordinator(appStartupRoute: self))
         }
+        
     }
 }

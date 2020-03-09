@@ -10,6 +10,4 @@ import Foundation
 import XCoordinator
 
 enum HomeRoute: Route {
-    case savedItems
-    case newsFeed
 }

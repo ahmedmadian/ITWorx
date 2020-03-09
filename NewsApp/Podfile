@@ -6,7 +6,6 @@ def swiftPods
   pod 'XCoordinator'
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'RxCoreData'
   pod 'Kingfisher'
   pod 'SwiftMessages'
 end

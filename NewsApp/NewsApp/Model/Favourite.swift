@@ -8,53 +8,62 @@
 
 import Foundation
 import CoreData
-import RxCoreData
 
-struct Favourite {
-    let imageURL: String
-    let url: String
-    let title: String
-    let date: Date
-}
-
-extension Favourite: Persistable {
-    
-    typealias T = NSManagedObject
-    
-    static var entityName: String {
-        return "Favourite"
-    }
-    
-    static var primaryAttributeName: String {
-        return "title"
-    }
-    
-    var identity: String {
-        return "title"
-    }
-    
-    init(entity: NSManagedObject) {
-        imageURL = entity.value(forKey: "imageURL") as! String
-        url = entity.value(forKey: "url") as! String
-        title = entity.value(forKey: "title") as! String
-        date = entity.value(forKey: "date") as! Date
-    }
-    
-    func update(_ entity: NSManagedObject) {
-        entity.setValue(imageURL, forKey: "imageURL")
-        entity.setValue(url, forKey: "url")
-        entity.setValue(title, forKey: "title")
-        entity.setValue(date, forKey: "date")
+extension Favourite {
+    class func createOrUpdate(imageURL: String, title: String, url: String, date: Date, context: NSManagedObjectContext) {
         
-        do {
-            try entity.managedObjectContext?.save()
-        } catch let e {
-            print(e)
+        context.performAndWait {
+            var item : Favourite
+            
+            if let existingItem = Favourite.getByURL(url: url, inContext: context) {
+                item = existingItem
+            } else {
+                item = Favourite.create(context)
+            }
+            
+            item.imageURL = imageURL
+            item.title = title
+            item.date = date
+            item.url = url
+            CoreDataManager.shared.saveContext()
         }
     }
     
-    func remove(_ entity: NSManagedObject) {
-        entity.managedObjectContext?.delete(entity)
+    class func getByURL(url:String? , inContext context:NSManagedObjectContext) -> Favourite? {
+        guard let url = url else{ return nil }
+        
+        var result: Favourite?
+        
+        context.performAndWait {
+            let fetchRequest: NSFetchRequest<Favourite> = Favourite.fetchRequest()
+            var predicates: [NSPredicate] = []
+            predicates.append(NSPredicate.init(format: "url = %@", url))
+            fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+            fetchRequest.returnsDistinctResults = true
+            do {
+                let items = try context.fetch(fetchRequest)
+                result = items.first
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        return result
     }
     
+    class func getAllSortedByDate(context: NSManagedObjectContext) -> [Favourite] {
+        let request: NSFetchRequest = Favourite.fetchRequest()
+        request.sortDescriptors =  [NSSortDescriptor(key: "date", ascending: false)]
+        do{
+            return try context.fetch(request)
+        } catch let error {
+            print (error.localizedDescription)
+        }
+        return []
+    }
+    
+    class func delete(url: String, context:NSManagedObjectContext) {
+        guard let item = getByURL(url: url, inContext: context) else {return}
+        context.delete(item)
+        CoreDataManager.shared.saveContext()
+    }
 }

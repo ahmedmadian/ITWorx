@@ -18,6 +18,9 @@ class CountriesViewController: BaseViewController, BindableType {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        if navigationController == nil {
+            self.nextButton.isHidden = true
+        }
     }
     
     // MARK: - Dependencies
@@ -36,24 +39,16 @@ class CountriesViewController: BaseViewController, BindableType {
         viewModel.output.data
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: CountryCell.typeName, cellType: CountryCell.self)) { item, data, cell in
-                cell.configCellAppearnce(with: data)
+                cell.bind(to: data)//configCellAppearnce(with: data)
         }.disposed(by: disposeBag)
         
         collectionView.rx.modelSelected(CountryViewModel.self)
-        .bind(to: viewModel.input.selectedCountry)
-        .disposed(by: disposeBag)
+            .bind(to: viewModel.input.selectedCountry)
+            .disposed(by: disposeBag)
         
-        collectionView.rx.itemSelected.subscribe(onNext:{ index in
-            if let cell = self.collectionView.cellForItem(at: index) as? CountryCell {
-                cell.borderView.isHidden = false
-            }
-            }).disposed(by: disposeBag)
-        
-        collectionView.rx.itemDeselected.subscribe(onNext:{ index in
-            if let cell = self.collectionView.cellForItem(at: index) as? CountryCell {
-                cell.borderView.isHidden = true
-            }
-        }).disposed(by: disposeBag)
+        collectionView.rx.modelDeselected(CountryViewModel.self)
+            .bind(to: viewModel.input.deselectedCountry)
+            .disposed(by: disposeBag)
         
         nextButton.rx.tap.bind(to: viewModel.input.didTapNext).disposed(by: disposeBag)
         

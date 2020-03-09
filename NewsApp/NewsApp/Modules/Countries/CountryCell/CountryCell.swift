@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class CountryCell: UICollectionViewCell{
+class CountryCell: UICollectionViewCell, BindableType{
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
@@ -18,37 +18,24 @@ class CountryCell: UICollectionViewCell{
     @IBOutlet weak var innerView: UIView!
     @IBOutlet weak var imageView: UIImageView!
  
-//    // MARK: - Depenencies
-//    var viewModel: CountryViewModelType!
-//    private let disposeBag = DisposeBag()
-//
-//    // MARK: - LifeCycle
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        configCellAppearnce()
-//    }
+    // MARK: - Depenencies
+    var viewModel: CountryViewModelType!
+    private let disposeBag = DisposeBag()
+
+    // MARK: - LifeCycle
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configCellAppearnce()
+    }
     
     
-//    // MARK: - Methods
-//    func bindViewModel() {
-//
-//    }
+    // MARK: - Methods
+    func bindViewModel() {
+        titleLabel.text = viewModel.output.title
+        viewModel.output.isNotSelected.bind(to: borderView.rx.isHidden).disposed(by: disposeBag)
+    }
     
-//    private func configCellAppearnce() {
-//        containerView.makeRoundedCorners(with: containerView.frame.height / 8)
-//        borderView.makeRoundedCorners(with: borderView.frame.height/8)
-//        innerView.makeRoundedCorners(with: borderView.frame.height/8)
-//        imageView.makeRoundedCorners(with: imageView.frame.height / 8)
-//        animateCell()
-//    }
-    
-    func configCellAppearnce(with viewModel: CountryViewModel) {
-        self.titleLabel.text = viewModel.name
-        if viewModel.isSelected {
-            borderView.isHidden = false
-        } else {
-            borderView.isHidden = true
-        }
+    private func configCellAppearnce() {
         containerView.makeRoundedCorners(with: containerView.frame.height / 8)
         borderView.makeRoundedCorners(with: borderView.frame.height/8)
         innerView.makeRoundedCorners(with: borderView.frame.height/8)

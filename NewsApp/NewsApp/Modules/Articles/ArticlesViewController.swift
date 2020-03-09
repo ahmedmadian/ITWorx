@@ -29,7 +29,6 @@ class ArticlesViewController: BaseViewController, BindableType {
         
         //Inputs
         rx.sentMessage(#selector(UIViewController.viewDidAppear(_:)))
-            .take(1)
             .map { _ in }
             .bind(to: viewModel.input.viewLoaded)
             .disposed(by: disposeBag)
@@ -44,6 +43,7 @@ class ArticlesViewController: BaseViewController, BindableType {
         tableView.rx.modelSelected(ArticleViewModel.self)
             .bind(to: viewModel.input.articleSelected)
             .disposed(by: disposeBag)
+        
         viewModel.output.loading.asObservable().observeOn(MainScheduler.instance).subscribe(onNext: { (isLoading) in
             if isLoading {
                 self.showLoader()
@@ -53,9 +53,12 @@ class ArticlesViewController: BaseViewController, BindableType {
         }).disposed(by: disposeBag)
         
         viewModel.output.errorMessage
-        .subscribe(onNext: {
-            self.showErrorMessage(text: $0)
-        }).disposed(by: disposeBag)
+            .subscribe(onNext: {
+                self.showErrorMessage(text: $0)
+            }).disposed(by: disposeBag)
+        
+        viewModel.output.title.bind(to: navigationItem.rx.title).disposed(by: disposeBag)
+        
     }
     
     private func congifTableView() {
@@ -75,6 +78,4 @@ extension ArticlesViewController: FavoriteArticleDelegate {
     func removeArticle(model: ArticleViewModel) {
         viewModel.input.removeArticle.on(.next(model))
     }
-    
-    
 }

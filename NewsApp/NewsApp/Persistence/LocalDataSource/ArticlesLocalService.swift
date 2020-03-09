@@ -8,7 +8,6 @@
 
 import Foundation
 import CoreData
-import RxCoreData
 
 protocol ArticlesLocalServiceProtocol {
     func add(articles: [Article])
@@ -24,6 +23,5 @@ class ArticlesLocalService: ArticlesLocalServiceProtocol {
     }
     
     func add(articles: [Article]) {
-        _ = articles.map { try? self.managedObjectContext.rx.update($0)}
     }
 }

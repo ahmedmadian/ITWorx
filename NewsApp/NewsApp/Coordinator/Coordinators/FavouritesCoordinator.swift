@@ -16,7 +16,6 @@ class FavouritesCoordinator: NavigationCoordinator<FavouritesRoute> {
         super.init(initialRoute: .favouritesList)
        }
     
-    
     override func prepareTransition(for route: FavouritesRoute) -> NavigationTransition {
         switch route {
         case .favouritesList:

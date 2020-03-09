@@ -29,7 +29,6 @@ class FavouritesViewController: BaseViewController, BindableType {
         
         //Inputs
         rx.sentMessage(#selector(UIViewController.viewDidAppear(_:)))
-            .take(1)
             .map { _ in }
             .bind(to: viewModel.input.viewAppeared)
             .disposed(by: disposeBag)

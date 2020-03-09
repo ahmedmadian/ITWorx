@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import RxSwift
 
-class SettingsService {
+class Settings {
     
-    static var shared = SettingsService()
+    static var shared = Settings()
     private let defualts = UserDefaults.standard
     
     
@@ -41,11 +42,22 @@ class SettingsService {
         }
     }
     
+    var categories: [String] {
+        get{
+            return defualts.array(forKey: CATEGORIES) as! [String]
+        }
+        set {
+            defualts.set(newValue, forKey: CATEGORIES)
+        }
+    }
+    
     
     
     // MARK:- Settings Service Keys
     private let LAUNCHED_BEFORE = "LanchedBefore"
     private let COUNTRY_NAME = "CountryName"
     private let COUNTRY_ISO = "CountryISO2"
+    private let CATEGORIES = "Categories"
     
 }
+

@@ -40,3 +40,15 @@ class CoreDataManager {
         }
     }
 }
+
+extension NSManagedObject {
+    class var className: String {
+        return String(describing: self).components(separatedBy: ".").last!
+    }
+    
+    class func create<Type>(_ context: NSManagedObjectContext) -> Type {
+        let entity = NSEntityDescription.entity(forEntityName: className, in: context)
+        let object = NSManagedObject(entity: entity!, insertInto: context)
+        return object as! Type
+    }
+}

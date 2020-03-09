@@ -18,6 +18,7 @@ protocol ArticlesViewModelInput {
 }
 
 protocol ArticlesViewModelOutput {
+    var title: Observable<String> { get }
     var data: Observable<[ArticleViewModel]> {get}
     var loading: Observable<Bool> { get }
     var errorMessage: PublishSubject<String> { get }

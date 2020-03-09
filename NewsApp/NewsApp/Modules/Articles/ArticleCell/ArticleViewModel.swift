@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+
 class ArticleViewModel {
     let posterImageURL: String
     let headline: String
@@ -18,14 +20,14 @@ class ArticleViewModel {
     var isFavoutie: Bool
     
     init(article: Article) {
-        self.posterImageURL = article.urlToImage
-        self.headline = article.title
-        self.date = article.publishedAt
+        self.posterImageURL = article.urlToImage ?? ""
+        self.headline = article.title ?? ""
+        self.date = article.publishedAt ?? ""
         self.authorName = article.author ?? ""
-        self.articleDescription = article.articleDescription
-        self.url = article.url
-        self.sourceName = article.source.name
-        self.isFavoutie = false
+        self.articleDescription = article.articleDescription ?? ""
+        self.url = article.url ?? ""
+        self.sourceName = article.source!.name
+        self.isFavoutie =  false
     }
 }
 

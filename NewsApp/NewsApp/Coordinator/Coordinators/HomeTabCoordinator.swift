@@ -20,7 +20,7 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
     // MARK: Stored properties
     private let newsFeedRouter: StrongRouter<NewsFeedRoute>
     private let favouritesRouter: StrongRouter<FavouritesRoute>
-    
+    private let settingsRoute: StrongRouter<SettingsRoute>
 
     // MARK: Initialization
     convenience init() {
@@ -30,15 +30,19 @@ class HomeTabCoordinator: TabBarCoordinator<HomeRoute> {
         
         let favouritesCoordinator = FavouritesCoordinator()
         favouritesCoordinator.rootViewController.tabBarItem = HomeTabCoordinator.getTabBarItem(image: UIImage(named: "star"), tag: 0)
+        
+        let settingsCoordinator = SettingsCoordinator()
+        settingsCoordinator.rootViewController.tabBarItem = HomeTabCoordinator.getTabBarItem(image: UIImage(named: "settings"), tag: 0)
 
-        self.init(newsFeedRouter: newsFeedCoordinator.strongRouter, favourotiesRouter: favouritesCoordinator.strongRouter )
+        self.init(newsFeedRouter: newsFeedCoordinator.strongRouter, favourotiesRouter: favouritesCoordinator.strongRouter, settingsRoute: settingsCoordinator.strongRouter )
     }
 
-    init(newsFeedRouter: StrongRouter<NewsFeedRoute>, favourotiesRouter: StrongRouter<FavouritesRoute>) {
+    init(newsFeedRouter: StrongRouter<NewsFeedRoute>, favourotiesRouter: StrongRouter<FavouritesRoute>, settingsRoute: StrongRouter<SettingsRoute>) {
         self.favouritesRouter = favourotiesRouter
         self.newsFeedRouter = newsFeedRouter
+        self.settingsRoute = settingsRoute
         
-        super.init(tabs: [newsFeedRouter, favourotiesRouter], select: newsFeedRouter)
+        super.init(tabs: [newsFeedRouter, favourotiesRouter, settingsRoute], select: newsFeedRouter)
     }
     
     static func getTabBarItem(image: UIImage?, tag: Int) -> UITabBarItem {

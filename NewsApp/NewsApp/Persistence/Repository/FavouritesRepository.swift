@@ -11,8 +11,8 @@ import RxSwift
 
 protocol FavouritesRepositoryProtocol {
     func fetchFavourites() -> Observable<[Favourite]>
-    func addToFavourites(favourite: Favourite)
-    func remove(favorite: Favourite)
+    func addToFavourites(imageURL: String, title: String, url: String, date: Date)
+    func remove(url: String)
 }
 
 class FavouritesRepository: FavouritesRepositoryProtocol{
@@ -26,16 +26,16 @@ class FavouritesRepository: FavouritesRepositoryProtocol{
     }
     
     //MARK:- Methods
-    func addToFavourites(favourite: Favourite) {
-        self.localDataSource.addTo(Favourites: favourite)
+    func addToFavourites(imageURL: String, title: String, url: String, date: Date) {
+        self.localDataSource.add(imageURL: imageURL, title: title, url: url, date: date)
     }
     
     func fetchFavourites() -> Observable<[Favourite]> {
         return self.localDataSource.fetchFavourotes()
     }
     
-    func remove(favorite: Favourite) {
-        self.localDataSource.remove(favorite: favorite)
+    func remove(url: String) {
+        self.localDataSource.remove(url: url)
     }
     
        

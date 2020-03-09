@@ -9,16 +9,14 @@
 import Foundation
 import RxSwift
 import CoreData
-import RxCoreData
 
 protocol FavouritesLocalServiceProtocol {
-    func addTo(Favourites favourite: Favourite)
-    func remove(favorite: Favourite)
+    func add(imageURL: String, title: String, url: String, date: Date)
+    func remove(url: String)
     func fetchFavourotes() -> Observable<[Favourite]>
 }
 
 class FavouritesLocalService: FavouritesLocalServiceProtocol {
-    
     
     var managedObjectContext: NSManagedObjectContext!
     
@@ -26,25 +24,18 @@ class FavouritesLocalService: FavouritesLocalServiceProtocol {
         managedObjectContext = context
     }
     
-    func addTo(Favourites favourite: Favourite) {
-        try? self.managedObjectContext.rx.update(favourite)
+    func add(imageURL: String, title: String, url: String, date: Date) {
+        Favourite.createOrUpdate(imageURL: imageURL, title: title, url: url, date: date, context: managedObjectContext)
     }
     
-    func remove(favorite: Favourite) {
-        do {
-            try self.managedObjectContext.rx.delete(favorite)
-            try self.managedObjectContext.save()
-        } catch let error {
-            print(error)
-        }
+    func remove(url: String) {
+        Favourite.delete(url: url, context: managedObjectContext)
         
     }
     
     func fetchFavourotes() -> Observable<[Favourite]> {
-        let favourites = managedObjectContext.rx.entities(Favourite.self, predicate: nil, sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)]).map {
-            $0.map{ ($0)} }
-        
-        return favourites
+        let favourites = Favourite.getAllSortedByDate(context: managedObjectContext)
+        return Observable.of(favourites)
     }
     
 }

@@ -15,8 +15,8 @@ class FavouriteViewModel {
     let url: String
     
     init(with favourite: Favourite) {
-        self.imageURL = favourite.imageURL
-        self.url = favourite.url
-        self.title = favourite.title
+        self.imageURL = favourite.imageURL ?? ""
+        self.url = favourite.url ?? ""
+        self.title = favourite.title ?? ""
     }
 }

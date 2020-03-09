@@ -13,11 +13,11 @@ import RxCocoa
 
 class CountriesViewModel: CountriesViewModelType, CountriesViewModelInput, CountriesViewModelOutput {
     
-   
     
     
     var viewLoaded: PublishSubject<Void>
     var selectedCountry: PublishSubject<CountryViewModel>
+    var deselectedCountry: PublishSubject<CountryViewModel>
     var didTapNext: PublishSubject<Void>
     var errorMessage: PublishSubject<String>
     
@@ -26,16 +26,19 @@ class CountriesViewModel: CountriesViewModelType, CountriesViewModelInput, Count
     private var itemSelected = false
     
     // MARK: - Dependancies
-    private let router: UnownedRouter<AppStartupRoute>
+    //private let startupRouter: UnownedRouter<AppStartupRoute>?
     private let countreyService: CountryServiceProtocol
+    private let settingsRouter: UnownedRouter<SettingsRoute>?
     
-    init(router: UnownedRouter<AppStartupRoute>, countreyService: CountryServiceProtocol){
-        self.router = router
+    init(settingsRouter: UnownedRouter<SettingsRoute>?, countreyService: CountryServiceProtocol){
+//        self.startupRouter = startupRouter
         self.countreyService = countreyService
+        self.settingsRouter = settingsRouter
         
         /// Init Inputs
         self.viewLoaded = PublishSubject<Void>().asObserver()
         self.selectedCountry = PublishSubject<CountryViewModel>().asObserver()
+        self.deselectedCountry = PublishSubject<CountryViewModel>().asObserver()
         self.didTapNext = PublishSubject<Void>().asObserver()
         
         let loadedData = BehaviorRelay<[CountryViewModel]>(value: [])
@@ -49,13 +52,22 @@ class CountriesViewModel: CountriesViewModelType, CountriesViewModelInput, Count
         
         _ = selectedCountry.subscribe(onNext: {
             self.itemSelected = true
-            SettingsService.shared.countryName = $0.name
-            SettingsService.shared.countryiso2 = $0.isoCode
+            $0.isNotSelected.accept(false)
+            Settings.shared.countryName = $0.title
+            Settings.shared.countryiso2 = $0.isoCode
         })
+        
+        _ = deselectedCountry.subscribe(onNext: {
+            self.itemSelected = false
+            $0.isNotSelected.accept(true)
+        })
+        
         
         _ = didTapNext.subscribe(onNext: {
             if self.itemSelected {
-                self.router.trigger(.home)
+                if let sRouter = self.settingsRouter {
+                    sRouter.trigger(.exit)
+                }
             } else {
                 self.errorMessage.onNext("PLEASE SELECT COUNTRY")
             }

@@ -14,9 +14,9 @@ protocol CountryViewModelInput {
 }
 
 protocol CountryViewModelOutput {
-    var title: BehaviorSubject<String> {get}
-    var imageURL: BehaviorSubject<String> {get}
-    var isBorderHidden: BehaviorRelay<Bool> { get }
+    var title: String {get}
+    var isoCode: String {get}
+    var isNotSelected: BehaviorRelay<Bool> {get}
 }
 
 protocol CountryViewModelType {
