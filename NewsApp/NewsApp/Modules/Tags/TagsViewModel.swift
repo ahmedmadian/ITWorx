@@ -63,6 +63,7 @@ class TagsViewModel: TagsViewModelType, TagsViewModelInput, TagsViewModelOutput 
             }
             Settings.shared.categories = selectedTags.map{$0.title}
             if let startuprRouter = startupRouter {
+                Settings.shared.launchedBefore = true
                 startuprRouter.trigger(.home)
             }
             if let router = settingsRouter {

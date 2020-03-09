@@ -21,7 +21,9 @@ class OnBordingCoordinator: PageCoordinator<AppStartupRoute> {
         let tagsController: TagsViewController = Storyboards.main.instantiate()!
         tagsController.bind(to: tagsViewModel)
         
+        let on: ON = Storyboards.main.instantiate()!
         
-        super.init(pages: [countriesController, tagsController])
+        //super.init(pages: [countriesController, tagsController])
+        super.init(rootViewController: on, pages: [countriesController, tagsController], loop: false, set: nil, direction: UIPageViewController.NavigationDirection.forward)
     }
 }

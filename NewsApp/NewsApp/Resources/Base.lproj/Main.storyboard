@@ -7,6 +7,14 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--ON-->
+        <scene sceneID="FZR-kf-7Eb">
+            <objects>
+                <pageViewController storyboardIdentifier="ON" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ihI-0O-cRC" customClass="ON" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dRl-SU-vQN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1542" y="131"/>
+        </scene>
         <!--Tags View Controller-->
         <scene sceneID="wZT-QP-pKD">
             <objects>
@@ -15,25 +23,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Phs-4R-xbf">
-                                <rect key="frame" x="20" y="74" width="274.5" height="66"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gol-OS-v5y">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="38.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please Select 3 Categories at least" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HS9-r8-MoT">
-                                        <rect key="frame" x="0.0" y="45.5" width="265.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5T-y0-IkD">
+                                <rect key="frame" x="357" y="78.5" width="37" height="30"/>
+                                <state key="normal" title="Done"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categories" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gol-OS-v5y">
+                                <rect key="frame" x="20" y="74" width="317" height="38.5"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="33"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="FpO-z1-4Rq">
-                                <rect key="frame" x="0.0" y="170" width="414" height="692"/>
+                                <rect key="frame" x="0.0" y="142.5" width="414" height="719.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Lda-qR-De3">
                                     <size key="itemSize" width="50" height="50"/>
@@ -43,22 +44,18 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M5T-y0-IkD">
-                                <rect key="frame" x="357" y="92" width="37" height="30"/>
-                                <state key="normal" title="Done"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="Phs-4R-xbf" firstAttribute="leading" secondItem="6Px-fH-xec" secondAttribute="leading" constant="20" id="HN8-ua-S7B"/>
-                            <constraint firstItem="M5T-y0-IkD" firstAttribute="leading" secondItem="Phs-4R-xbf" secondAttribute="trailing" constant="62.5" id="POy-pq-GiR"/>
+                            <constraint firstItem="FpO-z1-4Rq" firstAttribute="top" secondItem="gol-OS-v5y" secondAttribute="bottom" constant="30" id="HHT-Cy-efc"/>
                             <constraint firstItem="6Px-fH-xec" firstAttribute="trailing" secondItem="FpO-z1-4Rq" secondAttribute="trailing" id="SDU-D4-LLP"/>
-                            <constraint firstItem="M5T-y0-IkD" firstAttribute="centerY" secondItem="Phs-4R-xbf" secondAttribute="centerY" id="XiN-P8-fKk"/>
+                            <constraint firstItem="M5T-y0-IkD" firstAttribute="centerY" secondItem="gol-OS-v5y" secondAttribute="centerY" id="WTa-8u-SfP"/>
+                            <constraint firstItem="gol-OS-v5y" firstAttribute="leading" secondItem="6Px-fH-xec" secondAttribute="leading" constant="20" id="ezq-p9-vIq"/>
+                            <constraint firstItem="M5T-y0-IkD" firstAttribute="leading" secondItem="gol-OS-v5y" secondAttribute="trailing" constant="20" id="fPG-BU-TFp"/>
+                            <constraint firstItem="gol-OS-v5y" firstAttribute="top" secondItem="6Px-fH-xec" secondAttribute="top" constant="30" id="fuv-fw-Tu5"/>
                             <constraint firstItem="FpO-z1-4Rq" firstAttribute="leading" secondItem="6Px-fH-xec" secondAttribute="leading" id="iTU-7Z-WuW"/>
                             <constraint firstItem="6Px-fH-xec" firstAttribute="bottom" secondItem="FpO-z1-4Rq" secondAttribute="bottom" id="it3-Zz-A8b"/>
                             <constraint firstItem="6Px-fH-xec" firstAttribute="trailing" secondItem="M5T-y0-IkD" secondAttribute="trailing" constant="20" id="o0G-fE-h2W"/>
-                            <constraint firstItem="Phs-4R-xbf" firstAttribute="top" secondItem="6Px-fH-xec" secondAttribute="top" constant="30" id="oln-Uh-X3b"/>
-                            <constraint firstItem="FpO-z1-4Rq" firstAttribute="top" secondItem="Phs-4R-xbf" secondAttribute="bottom" constant="30" id="uSg-QB-niw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Px-fH-xec"/>
                     </view>

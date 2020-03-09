@@ -13,15 +13,7 @@ import SafariServices
 class AppStartupCoordinator: NavigationCoordinator<AppStartupRoute> {
     
     init() {
-        var initialRoute: AppStartupRoute = .onboarding
-        
-        if Settings.shared.launchedBefore {
-            initialRoute = .home
-        } else {
-            Settings.shared.launchedBefore = true
-            initialRoute = .onboarding
-        }
-        
+        let initialRoute: AppStartupRoute = Settings.shared.launchedBefore ? .home : .onboarding
         super.init(initialRoute: initialRoute)
         self.rootViewController.navigationBar.isHidden = true
     }
@@ -29,7 +21,7 @@ class AppStartupCoordinator: NavigationCoordinator<AppStartupRoute> {
     override func prepareTransition(for route: AppStartupRoute) -> NavigationTransition {
         switch route {
         case .home:
-            return .presentFullScreen(HomeTabCoordinator())
+            return .presentFullScreen(HomeTabCoordinator(), animation: .fade)
         case .onboarding:
             return .presentFullScreen(OnBordingCoordinator(appStartupRoute: self))
         }

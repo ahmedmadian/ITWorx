@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		572103F2936EC491429BC003 /* Pods_NewsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FBD271528B3167428270A03 /* Pods_NewsApp.framework */; };
+		DE20AB71241700530017A138 /* ON.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE20AB70241700530017A138 /* ON.swift */; };
 		DE57940A2410211C00341DFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794092410211C00341DFC /* AppDelegate.swift */; };
 		DE5794112410211C00341DFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE57940F2410211C00341DFC /* Main.storyboard */; };
 		DE5794142410211C00341DFC /* NewsApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE5794122410211C00341DFC /* NewsApp.xcdatamodeld */; };
@@ -58,6 +59,7 @@
 		DE5794BC2413EF3300341DFC /* FavouritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794BB2413EF3300341DFC /* FavouritesCoordinator.swift */; };
 		DE5794BE2413F22200341DFC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794BD2413F22200341DFC /* BaseViewController.swift */; };
 		DE5794C02413F33B00341DFC /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5794BF2413F33B00341DFC /* ActivityIndicator.swift */; };
+		DEB7A5992417057800C7485B /* Animation+Fade.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB7A5982417057800C7485B /* Animation+Fade.swift */; };
 		DED69B94241464AE007AE1CE /* countryISO2.json in Resources */ = {isa = PBXBuildFile; fileRef = DED69B93241464AE007AE1CE /* countryISO2.json */; };
 		DED69B9624146543007AE1CE /* CountryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED69B9524146543007AE1CE /* CountryService.swift */; };
 		DED69B98241465AB007AE1CE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = DED69B97241465AB007AE1CE /* Country.swift */; };
@@ -89,6 +91,7 @@
 		018B4D9C3CF43169BA7D430E /* Pods-NewsApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.release.xcconfig"; path = "Target Support Files/Pods-NewsApp/Pods-NewsApp.release.xcconfig"; sourceTree = "<group>"; };
 		4FBD271528B3167428270A03 /* Pods_NewsApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5571343EB0124B3CBE54F879 /* Pods-NewsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsApp.debug.xcconfig"; path = "Target Support Files/Pods-NewsApp/Pods-NewsApp.debug.xcconfig"; sourceTree = "<group>"; };
+		DE20AB70241700530017A138 /* ON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ON.swift; sourceTree = "<group>"; };
 		DE5794062410211C00341DFC /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5794092410211C00341DFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5794102410211C00341DFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +144,7 @@
 		DE5794BB2413EF3300341DFC /* FavouritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesCoordinator.swift; sourceTree = "<group>"; };
 		DE5794BD2413F22200341DFC /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		DE5794BF2413F33B00341DFC /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		DEB7A5982417057800C7485B /* Animation+Fade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation+Fade.swift"; sourceTree = "<group>"; };
 		DED69B93241464AE007AE1CE /* countryISO2.json */ = {isa = PBXFileReference; explicitFileType = text.json; path = countryISO2.json; sourceTree = "<group>"; };
 		DED69B9524146543007AE1CE /* CountryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryService.swift; sourceTree = "<group>"; };
 		DED69B97241465AB007AE1CE /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
@@ -330,6 +334,8 @@
 				DE57946E2410930300341DFC /* Routes */,
 				DE5794772410955C00341DFC /* Coordinators */,
 				DE20AB682416801F0017A138 /* Extension */,
+				DE20AB70241700530017A138 /* ON.swift */,
+				DEB7A5982417057800C7485B /* Animation+Fade.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -658,6 +664,7 @@
 				DE57947D2410A10D00341DFC /* Settings.swift in Sources */,
 				DED69BCF24154D94007AE1CE /* Tag.swift in Sources */,
 				DE579439241028D600341DFC /* BaseServiceError.swift in Sources */,
+				DE20AB71241700530017A138 /* ON.swift in Sources */,
 				DE57946524106C6300341DFC /* ArticleViewModel.swift in Sources */,
 				DED69BA024148047007AE1CE /* CountriesViewModel.swift in Sources */,
 				DE5794492410411500341DFC /* AppStartupRoute.swift in Sources */,
@@ -676,6 +683,7 @@
 				DE57944624103B6700341DFC /* Source.swift in Sources */,
 				DE57945C2410632D00341DFC /* ArticlesLocalService.swift in Sources */,
 				DE5794BC2413EF3300341DFC /* FavouritesCoordinator.swift in Sources */,
+				DEB7A5992417057800C7485B /* Animation+Fade.swift in Sources */,
 				DED69BB2241513E9007AE1CE /* SettingsCoordinator.swift in Sources */,
 				DE5794762410947F00341DFC /* FavouritesRoute.swift in Sources */,
 				DED69BA9241482F4007AE1CE /* CountryCell.swift in Sources */,
