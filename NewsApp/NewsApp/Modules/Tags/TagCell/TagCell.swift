@@ -35,7 +35,6 @@ class TagCell: UICollectionViewCell, BindableType {
         /// OUTPUT
         titleLabel.text = viewModel.output.title
         viewModel.output.isSelected.subscribe(onNext: {
-            print($0)
             self.borderView.isHidden = !$0
         }).disposed(by: disposeBag)
         

@@ -53,9 +53,8 @@ class TagsViewModel: TagsViewModelType, TagsViewModelInput, TagsViewModelOutput 
         
         _ = didTapDone.subscribe(onNext: {
             let selectedTags = loadedData.filter {$0.isSelected.value}
-            print(selectedTags.count)
-            if selectedTags.count < 3 {
-                self.errorMessage.onNext("PLEASE Select 3 Categories at least")
+            if selectedTags.count != 3 {
+                self.errorMessage.onNext("Please Select 3 Categories Only")
                 return
             }
             if Settings.shared.countryName == nil {

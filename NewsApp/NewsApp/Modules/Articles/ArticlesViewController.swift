@@ -28,7 +28,7 @@ class ArticlesViewController: BaseViewController, BindableType {
     // MARK: - Method
     func bindViewModel() {
         
-        //Inputs
+        /// INPUTS
         rx.sentMessage(#selector(UIViewController.viewDidAppear(_:)))
             .map { _ in }
             .bind(to: viewModel.input.viewLoaded)
@@ -38,10 +38,9 @@ class ArticlesViewController: BaseViewController, BindableType {
                    .bind(to: viewModel.input.articleSelected)
                    .disposed(by: disposeBag)
         
-        /// Output
+        /// OUTPUTS
         viewModel.output.data
             .observeOn(MainScheduler.instance)
-            .do(onNext: {print($0)})
             .bind(to: tableView.rx.items(cellIdentifier: ArticleCell.typeName, cellType: ArticleCell.self)) { item, data, cell in
                 cell.delegate = self
                 cell.configCellAppearnce(with: data)
