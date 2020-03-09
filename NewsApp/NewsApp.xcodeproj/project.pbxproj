@@ -205,6 +205,34 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		DE20AB6B2416F4F20017A138 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DE57945A241062F400341DFC /* LocalServices */,
+				DE57943A2410292500341DFC /* RemoteServices */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DE20AB6C2416F5240017A138 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DE5794092410211C00341DFC /* AppDelegate.swift */,
+				DE57941A2410211E00341DFC /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DE20AB6D2416F53D0017A138 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE57940F2410211C00341DFC /* Main.storyboard */,
+				DE5794152410211E00341DFC /* Assets.xcassets */,
+				DE5794172410211E00341DFC /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		DE5793FD2410211C00341DFC = {
 			isa = PBXGroup;
 			children = (
@@ -231,11 +259,8 @@
 				DE579447241040FA00341DFC /* Coordinator */,
 				DE57944224103B0700341DFC /* Model */,
 				DE5794202410229200341DFC /* Library */,
-				DE5794092410211C00341DFC /* AppDelegate.swift */,
-				DE57940F2410211C00341DFC /* Main.storyboard */,
-				DE5794152410211E00341DFC /* Assets.xcassets */,
-				DE5794172410211E00341DFC /* LaunchScreen.storyboard */,
-				DE57941A2410211E00341DFC /* Info.plist */,
+				DE20AB6C2416F5240017A138 /* Application */,
+				DE20AB6D2416F53D0017A138 /* Resources */,
 			);
 			path = NewsApp;
 			sourceTree = "<group>";
@@ -266,13 +291,13 @@
 			path = BaseService;
 			sourceTree = "<group>";
 		};
-		DE57943A2410292500341DFC /* RemoteDataSource */ = {
+		DE57943A2410292500341DFC /* RemoteServices */ = {
 			isa = PBXGroup;
 			children = (
 				DE57943B2410293A00341DFC /* NewsAPIClient */,
 				DE579423241023BE00341DFC /* BaseService */,
 			);
-			path = RemoteDataSource;
+			path = RemoteServices;
 			sourceTree = "<group>";
 		};
 		DE57943B2410293A00341DFC /* NewsAPIClient */ = {
@@ -349,7 +374,7 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		DE57945A241062F400341DFC /* LocalDataSource */ = {
+		DE57945A241062F400341DFC /* LocalServices */ = {
 			isa = PBXGroup;
 			children = (
 				DED69B922414646B007AE1CE /* Country */,
@@ -357,7 +382,7 @@
 				DE57947C2410A10D00341DFC /* Settings.swift */,
 				DE5794B72413E6F400341DFC /* FavouritesLocalService.swift */,
 			);
-			path = LocalDataSource;
+			path = LocalServices;
 			sourceTree = "<group>";
 		};
 		DE57946324106B1800341DFC /* ArticleCell */ = {
@@ -374,8 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				DE5794692410734100341DFC /* Repository */,
-				DE57945A241062F400341DFC /* LocalDataSource */,
-				DE57943A2410292500341DFC /* RemoteDataSource */,
+				DE20AB6B2416F4F20017A138 /* Services */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
