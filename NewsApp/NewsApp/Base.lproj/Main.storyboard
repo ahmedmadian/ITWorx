@@ -7,21 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="Y1t-Z3-sSu">
-            <objects>
-                <viewController id="XF1-B1-eab" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Z6C-ig-9ty">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="ty2-ra-4WB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fLx-ey-rii" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1845" y="127"/>
-        </scene>
         <!--Tags View Controller-->
         <scene sceneID="wZT-QP-pKD">
             <objects>
@@ -209,26 +194,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="jf6-CC-3z6">
-                                <rect key="frame" x="20" y="84" width="374" height="79.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="mGk-oW-tua">
+                                <rect key="frame" x="20" y="84" width="374" height="145"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfy-9b-yXa">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="26.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rOF-vQ-S1V">
-                                        <rect key="frame" x="0.0" y="39.5" width="374" height="40"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="13c-SZ-Bg7">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Egypt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvO-UT-FPJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="314" height="40"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="jf6-CC-3z6">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfy-9b-yXa">
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Egypt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvO-UT-FPJ">
+                                                        <rect key="frame" x="0.0" y="39.5" width="327" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q0V-e4-mCt">
-                                                <rect key="frame" x="334" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="339" y="12.5" width="35" height="35"/>
+                                                <state key="normal" image="edit"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="2bz-lD-zpQ">
+                                        <rect key="frame" x="0.0" y="85" width="374" height="60"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="Qsa-LK-CEK">
+                                                <rect key="frame" x="0.0" y="0.0" width="327" height="60"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prefrences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tR3-wg-2vy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="327" height="26.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="bb,bb,bb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MVg-Q2-BhM">
+                                                        <rect key="frame" x="0.0" y="39.5" width="327" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NRC-Nx-1EL">
+                                                <rect key="frame" x="339" y="12.5" width="35" height="35"/>
                                                 <state key="normal" image="edit"/>
                                             </button>
                                         </subviews>
@@ -238,14 +254,16 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="XBv-l4-Hvo" firstAttribute="trailing" secondItem="jf6-CC-3z6" secondAttribute="trailing" constant="20" id="X9p-GT-7eg"/>
-                            <constraint firstItem="jf6-CC-3z6" firstAttribute="leading" secondItem="XBv-l4-Hvo" secondAttribute="leading" constant="20" id="rkI-bq-pbK"/>
-                            <constraint firstItem="jf6-CC-3z6" firstAttribute="top" secondItem="XBv-l4-Hvo" secondAttribute="top" constant="40" id="tKf-DB-1lT"/>
+                            <constraint firstItem="XBv-l4-Hvo" firstAttribute="trailing" secondItem="mGk-oW-tua" secondAttribute="trailing" constant="20" id="CBu-vV-1vh"/>
+                            <constraint firstItem="mGk-oW-tua" firstAttribute="top" secondItem="XBv-l4-Hvo" secondAttribute="top" constant="40" id="MMJ-Iw-50D"/>
+                            <constraint firstItem="mGk-oW-tua" firstAttribute="leading" secondItem="XBv-l4-Hvo" secondAttribute="leading" constant="20" id="TIN-Vb-yJO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XBv-l4-Hvo"/>
                     </view>
                     <connections>
                         <outlet property="countryLabel" destination="fvO-UT-FPJ" id="V2b-N8-jCr"/>
+                        <outlet property="prefrencesLabel" destination="MVg-Q2-BhM" id="9H3-6a-6HA"/>
+                        <outlet property="selectCategoryButton" destination="NRC-Nx-1EL" id="Jy3-eI-3IC"/>
                         <outlet property="selectCountryButton" destination="q0V-e4-mCt" id="AzJ-Aj-H4a"/>
                     </connections>
                 </viewController>
@@ -255,6 +273,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="edit" width="40" height="40"/>
+        <image name="edit" width="35" height="35"/>
     </resources>
 </document>

@@ -26,12 +26,10 @@ class CountriesViewModel: CountriesViewModelType, CountriesViewModelInput, Count
     private var itemSelected = false
     
     // MARK: - Dependancies
-    //private let startupRouter: UnownedRouter<AppStartupRoute>?
     private let countreyService: CountryServiceProtocol
     private let settingsRouter: UnownedRouter<SettingsRoute>?
     
     init(settingsRouter: UnownedRouter<SettingsRoute>?, countreyService: CountryServiceProtocol){
-//        self.startupRouter = startupRouter
         self.countreyService = countreyService
         self.settingsRouter = settingsRouter
         
@@ -47,19 +45,29 @@ class CountriesViewModel: CountriesViewModelType, CountriesViewModelInput, Count
         errorMessage = PublishSubject<String>()
         
         self.data = viewLoaded.flatMapLatest( { _ -> Observable<[CountryViewModel]> in
-            return self.countreyService.fetchCountries()!.map { $0.map {CountryViewModel(with: $0) }}
+            return self.countreyService.fetchCountries()!.map { $0.map { country -> CountryViewModel in
+                let viewModel = CountryViewModel(with: country)
+                viewModel.isSelected.accept(Settings.shared.countryName ?? "" == viewModel.title)
+                return viewModel}}
         })
         
         _ = selectedCountry.subscribe(onNext: {
             self.itemSelected = true
-            $0.isNotSelected.accept(false)
+            $0.isSelected.accept(!$0.isSelected.value)
             Settings.shared.countryName = $0.title
             Settings.shared.countryiso2 = $0.isoCode
+            if self.itemSelected {
+                if let sRouter = self.settingsRouter {
+                    sRouter.trigger(.exit)
+                }
+            } else {
+                self.errorMessage.onNext("PLEASE SELECT COUNTRY")
+            }
         })
         
         _ = deselectedCountry.subscribe(onNext: {
             self.itemSelected = false
-            $0.isNotSelected.accept(true)
+            $0.isSelected.accept(!$0.isSelected.value)
         })
         
         

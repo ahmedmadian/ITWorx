@@ -42,9 +42,9 @@ class Settings {
         }
     }
     
-    var categories: [String] {
+    var categories: [String]?  {
         get{
-            return defualts.array(forKey: CATEGORIES) as! [String]
+            return defualts.array(forKey: CATEGORIES) as? [String]
         }
         set {
             defualts.set(newValue, forKey: CATEGORIES)

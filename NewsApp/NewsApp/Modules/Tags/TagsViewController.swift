@@ -49,22 +49,6 @@ class TagsViewController: BaseViewController, BindableType {
         collectionView.rx.modelSelected(TagViewModel.self)
         .bind(to: viewModel.input.selectCategory)
         .disposed(by: disposeBag)
-
-        
-//        collectionView.rx.modelSelected(CountryViewModel.self)
-//            .bind(to: viewModel.input.selectedCountry)
-//            .disposed(by: disposeBag)
-//
-//        collectionView.rx.modelDeselected(CountryViewModel.self)
-//            .bind(to: viewModel.input.deselectedCountry)
-//            .disposed(by: disposeBag)
-//
-//        nextButton.rx.tap.bind(to: viewModel.input.didTapNext).disposed(by: disposeBag)
-//
-//        viewModel.output.errorMessage
-//        .subscribe(onNext: {
-//            self.showErrorMessage(text: $0)
-//        }).disposed(by: disposeBag)
     }
     
     private func registerCell() {

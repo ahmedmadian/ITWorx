@@ -12,7 +12,6 @@ import RxCocoa
 
 protocol FavouritesViewModelInput {
     var viewAppeared: PublishSubject<Void> { get }
-
 }
 
 protocol FavouritesViewModelOutput {

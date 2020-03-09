@@ -39,7 +39,7 @@ class CountriesViewController: BaseViewController, BindableType {
         viewModel.output.data
             .observeOn(MainScheduler.instance)
             .bind(to: collectionView.rx.items(cellIdentifier: CountryCell.typeName, cellType: CountryCell.self)) { item, data, cell in
-                cell.bind(to: data)//configCellAppearnce(with: data)
+                cell.bind(to: data)
         }.disposed(by: disposeBag)
         
         collectionView.rx.modelSelected(CountryViewModel.self)
@@ -70,8 +70,6 @@ class CountriesViewController: BaseViewController, BindableType {
         let itemWidth = collectionView.bounds.width/4
         let itemHeight = collectionView.bounds.height / 6
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-        //flowLayout.minimumInteritemSpacing = 8
-        //flowLayout.minimumLineSpacing = 8
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
         collectionView.setCollectionViewLayout(flowLayout, animated: true)
     }

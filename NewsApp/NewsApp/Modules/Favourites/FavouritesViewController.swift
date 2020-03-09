@@ -12,33 +12,34 @@ import RxCocoa
 
 class FavouritesViewController: BaseViewController, BindableType {
 
-    // MARK:- Outlets
+    // MARK:- OUTLETS
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: - Dependencies
+    // MARK: - DEPENDENCIES
     var viewModel: FavouritesViewModelType!
     private let disposeBag = DisposeBag()
     
+    // MARK: - LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         congifTableView()
     }
     
-    // MARK: - Method
+    // MARK: - METHODS
     func bindViewModel() {
         
-        //Inputs
+        /// Inputs
         rx.sentMessage(#selector(UIViewController.viewDidAppear(_:)))
             .map { _ in }
             .bind(to: viewModel.input.viewAppeared)
             .disposed(by: disposeBag)
         
+        /// Outputs
         viewModel.output.data
             .observeOn(MainScheduler.instance)
             .bind(to: tableView.rx.items(cellIdentifier: FavouriteCell.typeName, cellType: FavouriteCell.self)) { item, data, cell in
                 cell.configCellAppearnce(with: data)
         }.disposed(by: disposeBag)
-        
         
     }
     

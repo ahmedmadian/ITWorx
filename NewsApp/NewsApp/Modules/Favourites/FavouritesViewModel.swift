@@ -13,23 +13,27 @@ import RxCocoa
 
 class FavouritesViewModel: FavouritesViewModelType, FavouritesViewModelInput, FavouritesViewModelOutput {
     
+    //MARK: - INPUT
     var viewAppeared: PublishSubject<Void>
+    
+    //MARK: - OUTPUT
     var data: Observable<[FavouriteViewModel]>
     
-    // MARK: - Dependancies
+    // MARK: - DEPENDENCIES
        private var router: UnownedRouter<FavouritesRoute>
        private let favouritesRepository: FavouritesRepository
        
     init(router: UnownedRouter<FavouritesRoute>, favouritesRepository: FavouritesRepository) {
+        
+        /// init DEPENDENCIES
         self.router = router
         self.favouritesRepository = favouritesRepository
         
-        /// Init Inputs
+        /// init INPUT
         self.viewAppeared = PublishSubject<Void>().asObserver()
         
-        let loadedData = BehaviorRelay<[FavouriteViewModel]>(value: [])
-        data = loadedData.asObservable()
-        
+        /// init OUTPUT
+        self.data = Observable.empty()
         self.data = viewAppeared.flatMapLatest( { _ -> Observable<[FavouriteViewModel]> in
             return self.favouritesRepository.fetchFavourites().map{ $0.map { FavouriteViewModel(with: $0) }}
         })

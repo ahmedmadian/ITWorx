@@ -16,7 +16,7 @@ protocol CountryViewModelInput {
 protocol CountryViewModelOutput {
     var title: String {get}
     var isoCode: String {get}
-    var isNotSelected: BehaviorRelay<Bool> {get}
+    var isSelected: BehaviorRelay<Bool> {get}
 }
 
 protocol CountryViewModelType {

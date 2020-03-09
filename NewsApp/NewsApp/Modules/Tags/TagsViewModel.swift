@@ -13,18 +13,12 @@ import XCoordinator
 
 class TagsViewModel: TagsViewModelType, TagsViewModelInput, TagsViewModelOutput {
     
-    
-    
-    
-    
     var viewLoaded: PublishSubject<Void>
     var didTapDone: PublishSubject<Void>
     var selectCategory: PublishSubject<TagViewModel>
 
-    
     var data: Observable<[TagViewModel]>
     var errorMessage: PublishSubject<String>
-    
     
     // MARK: - Dependancies
        private let startupRouter: UnownedRouter<AppStartupRoute>?
@@ -41,22 +35,44 @@ class TagsViewModel: TagsViewModelType, TagsViewModelInput, TagsViewModelOutput 
         
         errorMessage = PublishSubject<String>()
         
-        let loadedData = Tag.dummyTags().map{TagViewModel(with: $0)}
-        self.data = Observable.of(loadedData)
+       // let loadedData = Tag.dummyTags().map{TagViewModel(with: $0)}
+        
+        //self.data = Observable.of(loadedData)
 //        self.data = viewLoaded.flatMapLatest({ _ -> Observable<[TagViewModel]> in
 //            let res = Tag.dummyTags().map {$0.map {TagViewModel(with: $0)}}
 //            return res
+//        })
+        
+        let loadedData = Tag.dummyTags().map { tag -> TagViewModel in
+            let items = Settings.shared.categories
+            let viewModel = TagViewModel(with: tag)
+            viewModel.isSelected.accept(items?.contains(tag.name) ?? false)
+            return viewModel
+        }
+        
+        self.data = Observable.of(loadedData)
+        
+//        self.data = viewLoaded.flatMapLatest({ _ -> Observable<[TagViewModel]> in
+//            let items = Settings.shared.categories
+//            let res = Tag.dummyTags().map { tag -> TagViewModel in
+//                let viewModel = TagViewModel(with: tag)
+//                viewModel.isSelected.accept(items?.contains(tag.name) ?? false)
+//                return viewModel
+//            }
+//            return Observable.of(res)
 //        })
         
         
         
         _ = selectCategory.subscribe(onNext: {
             $0.isSelected.accept(!$0.isSelected.value)
-            //Settings.shared.categories.append($0.title)
+            //if (Settings.shared.categories?.contains($0.title) ?? false) { return}
+            //Settings.shared.categories?.append($0.title)
         })
         
         _ = didTapDone.subscribe(onNext: {
             let selectedTags = loadedData.filter {$0.isSelected.value}
+            print(selectedTags.count)
             if selectedTags.count < 3 {
                 self.errorMessage.onNext("PLEASE Select 3 Categories at least")
                 return
@@ -68,6 +84,9 @@ class TagsViewModel: TagsViewModelType, TagsViewModelInput, TagsViewModelOutput 
             Settings.shared.categories = selectedTags.map{$0.title}
             if let startuprRouter = startupRouter {
                 startuprRouter.trigger(.home)
+            }
+            if let router = settingsRouter {
+                router.trigger(.exit)
             }
         })
         

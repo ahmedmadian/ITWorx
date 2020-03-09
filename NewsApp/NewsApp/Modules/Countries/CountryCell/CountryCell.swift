@@ -32,7 +32,9 @@ class CountryCell: UICollectionViewCell, BindableType{
     // MARK: - Methods
     func bindViewModel() {
         titleLabel.text = viewModel.output.title
-        viewModel.output.isNotSelected.bind(to: borderView.rx.isHidden).disposed(by: disposeBag)
+        viewModel.output.isSelected.subscribe(onNext: {
+            self.borderView.isHidden = !$0
+        }).disposed(by: disposeBag)
     }
     
     private func configCellAppearnce() {

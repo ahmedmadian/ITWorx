@@ -11,13 +11,15 @@ import RxSwift
 import RxCocoa
 
 protocol SettingsViewModelInput {
-     var viewLoaded: PublishSubject<Void> { get }
+    var viewLoaded: PublishSubject<Void> { get }
     var didTapEditCountry: PublishSubject<Void> { get }
+    var didTapEditCategory: PublishSubject<Void> { get }
 }
 
 protocol SettingsViewModelOutput {
     var title: Observable<String> { get }
     var selectedCountry: Observable<String> { get }
+    var prefrences: Observable<String> { get }
 }
 
 protocol SettingsViewModelType {

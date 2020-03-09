@@ -12,5 +12,6 @@ import XCoordinator
 enum SettingsRoute: Route {
     case settings
     case countrySelection
+    case categorySelection
     case exit
 }

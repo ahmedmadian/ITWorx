@@ -29,7 +29,13 @@ class SettingsCoordinator: NavigationCoordinator<SettingsRoute> {
             let viewModel = CountriesViewModel(settingsRouter: self.unownedRouter, countreyService: CountryService.shared)
             let controller: CountriesViewController = Storyboards.main.instantiate()!
             controller.bind(to: viewModel)
-            return .present(controller)
+            return .presentFullScreen(controller)
+            
+        case .categorySelection:
+            let tagsViewModel = TagsViewModel(startupRouter: nil , settingsRouter: self.unownedRouter)
+            let tagsController: TagsViewController = Storyboards.main.instantiate()!
+            tagsController.bind(to: tagsViewModel)
+            return .presentFullScreen(tagsController)
             
         case .exit:
             return .dismiss()

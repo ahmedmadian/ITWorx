@@ -13,12 +13,12 @@ import RxCocoa
 class CountryViewModel: CountryViewModelType, CountryViewModelInput, CountryViewModelOutput {
     
     var title: String
-    var isNotSelected: BehaviorRelay<Bool>
+    var isSelected: BehaviorRelay<Bool>
     var isoCode: String
     
     init(with country: Country) {
         self.title = country.name
         self.isoCode = country.iso2
-        isNotSelected = BehaviorRelay<Bool>(value: true)
+        isSelected = BehaviorRelay<Bool>(value: false)
     }
 }

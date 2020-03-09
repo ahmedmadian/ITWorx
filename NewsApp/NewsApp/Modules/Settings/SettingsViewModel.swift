@@ -13,14 +13,13 @@ import RxCocoa
 
 class SettingsViewModel: SettingsViewModelType, SettingsViewModelInput, SettingsViewModelOutput {
     
-    
-   
     var viewLoaded: PublishSubject<Void>
     var didTapEditCountry: PublishSubject<Void>
+    var didTapEditCategory: PublishSubject<Void>
     
     var title: Observable<String>
     var selectedCountry: Observable<String>
-
+    var prefrences: Observable<String>
     
     // MARK: - Dependancies
     private let router: UnownedRouter<SettingsRoute>
@@ -30,16 +29,24 @@ class SettingsViewModel: SettingsViewModelType, SettingsViewModelInput, Settings
         
         self.viewLoaded = PublishSubject<Void>().asObserver()
         didTapEditCountry = PublishSubject<Void>().asObserver()
+        didTapEditCategory = PublishSubject<Void>().asObserver()
 
         self.title = Observable.just("Settings")
         
         self.selectedCountry = viewLoaded.flatMapLatest({_ -> Observable<String> in
             return Observable.just(Settings.shared.countryName!)
         })
-       
         
+        self.prefrences = viewLoaded.flatMapLatest({_ -> Observable<String> in
+            return Observable.just(Settings.shared.categories!.joined(separator: ", "))
+        })
+       
         _ = didTapEditCountry.subscribe(onNext: {
             self.router.trigger(.countrySelection)
+        })
+        
+        _ = didTapEditCategory.subscribe(onNext: {
+            self.router.trigger(.categorySelection)
         })
     }
 }

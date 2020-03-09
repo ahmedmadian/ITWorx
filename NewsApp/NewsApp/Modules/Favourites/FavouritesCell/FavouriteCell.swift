@@ -10,10 +10,11 @@ import UIKit
 
 class FavouriteCell: UITableViewCell {
 
+    //MARK: - OUTLETS
     @IBOutlet weak var posteView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    // MARK: - Methods
+    // MARK: - METHODS
     func configCellAppearnce(with viewModel: FavouriteViewModel) {
         posteView.kf.setImage(with: URL.init(string: viewModel.imageURL), options: [
             .scaleFactor(UIScreen.main.scale),
