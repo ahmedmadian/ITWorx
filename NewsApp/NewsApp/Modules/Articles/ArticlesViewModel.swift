@@ -81,7 +81,7 @@ class ArticlesViewModel: ArticlesViewModelType, ArticlesViewModelInput, Articles
         
         
         self.title = viewLoaded.flatMapLatest({_ -> Observable<String> in
-            return Observable.just(Settings.shared.countryName!)
+            return Observable.just("\(Settings.shared.countryName!) News")
         })
         
         _ = saveArticle.subscribe(onNext: {

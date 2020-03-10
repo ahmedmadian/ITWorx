@@ -135,7 +135,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gpM-Si-kOr">
-                                <rect key="frame" x="8" y="142.5" width="398" height="719.5"/>
+                                <rect key="frame" x="8" y="142.5" width="398" height="753.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="EyQ-kD-HV6">
                                     <size key="itemSize" width="50" height="50"/>
@@ -149,7 +149,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Bea-J9-IQz" firstAttribute="leading" secondItem="bie-cm-tNY" secondAttribute="leading" constant="20" id="6gp-6g-HAy"/>
-                            <constraint firstItem="bie-cm-tNY" firstAttribute="bottom" secondItem="gpM-Si-kOr" secondAttribute="bottom" id="C2g-Db-KDt"/>
+                            <constraint firstAttribute="bottom" secondItem="gpM-Si-kOr" secondAttribute="bottom" id="C2g-Db-KDt"/>
                             <constraint firstItem="gpM-Si-kOr" firstAttribute="top" secondItem="Bea-J9-IQz" secondAttribute="bottom" constant="30" id="JOE-A8-Ae3"/>
                             <constraint firstItem="Bea-J9-IQz" firstAttribute="top" secondItem="bie-cm-tNY" secondAttribute="top" constant="30" id="KOk-dx-jZx"/>
                             <constraint firstItem="bie-cm-tNY" firstAttribute="trailing" secondItem="gpM-Si-kOr" secondAttribute="trailing" constant="8" id="Tca-gC-R6X"/>

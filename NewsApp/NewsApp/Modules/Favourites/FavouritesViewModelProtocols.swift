@@ -17,6 +17,7 @@ protocol FavouritesViewModelInput {
 
 protocol FavouritesViewModelOutput {
     var data: Observable<[FavouriteViewModel]> {get}
+    var title: Observable<String> { get }
 }
 
 protocol FavouritesViewModelType {

@@ -31,7 +31,7 @@ class ArticleCell: UITableViewCell {
         posterImageView.makeRoundedCorners(with: 30)
         container.makeRoundedCorners(with: 20)
         tilteView.makeRoundedCorners(with: 20)
-        posterImageView.kf.setImage(with: URL.init(string: viewModel.posterImageURL ), options: [
+        posterImageView.kf.setImage(with: URL.init(string: viewModel.posterImageURL),placeholder: UIImage(named: "news") , options: [
             .scaleFactor(UIScreen.main.scale),
             .transition(.fade(1)),
             .cacheOriginalImage,

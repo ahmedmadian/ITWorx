@@ -45,6 +45,10 @@ class FavouritesViewController: BaseViewController, BindableType {
                 cell.configCellAppearnce(with: data)
         }.disposed(by: disposeBag)
         
+        viewModel.output.title
+            .bind(to: navigationItem.rx.title)
+            .disposed(by: disposeBag)
+        
     }
     
     private func congifTableView() {

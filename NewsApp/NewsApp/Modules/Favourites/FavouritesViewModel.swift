@@ -19,6 +19,7 @@ class FavouritesViewModel: FavouritesViewModelType, FavouritesViewModelInput, Fa
     
     //MARK: - OUTPUT
     var data: Observable<[FavouriteViewModel]>
+    var title: Observable<String>
     
     // MARK: - DEPENDENCIES
        private var router: UnownedRouter<FavouritesRoute>
@@ -36,6 +37,7 @@ class FavouritesViewModel: FavouritesViewModelType, FavouritesViewModelInput, Fa
         
         /// init OUTPUT
         self.data = Observable.empty()
+        self.title = Observable.of("Saved")
         self.data = viewAppeared.flatMapLatest( { _ -> Observable<[FavouriteViewModel]> in
             return self.favouritesRepository.fetchFavourites().map{ $0.map { FavouriteViewModel(with: $0) }}
         })
