@@ -21,9 +21,11 @@ class OnBordingCoordinator: PageCoordinator<AppStartupRoute> {
         let tagsController: TagsViewController = Storyboards.main.instantiate()!
         tagsController.bind(to: tagsViewModel)
         
-        let on: ON = Storyboards.main.instantiate()!
         
-        //super.init(pages: [countriesController, tagsController])
-        super.init(rootViewController: on, pages: [countriesController, tagsController], loop: false, set: nil, direction: UIPageViewController.NavigationDirection.forward)
+        let rootController = UIPageViewController(transitionStyle: UIPageViewController.TransitionStyle.scroll , navigationOrientation: UIPageViewController.NavigationOrientation.horizontal, options: nil)
+        
+        rootController.view.backgroundColor = #colorLiteral(red: 0.9958658814, green: 1, blue: 0.9999271035, alpha: 1)
+        
+        super.init(rootViewController: rootController, pages: [countriesController, tagsController], loop: false, set: nil, direction: UIPageViewController.NavigationDirection.forward)
     }
 }

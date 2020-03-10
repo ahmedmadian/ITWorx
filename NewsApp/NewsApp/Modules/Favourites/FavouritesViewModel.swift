@@ -15,6 +15,7 @@ class FavouritesViewModel: FavouritesViewModelType, FavouritesViewModelInput, Fa
     
     //MARK: - INPUT
     var viewAppeared: PublishSubject<Void>
+    var selectFavourite: PublishSubject<FavouriteViewModel>
     
     //MARK: - OUTPUT
     var data: Observable<[FavouriteViewModel]>
@@ -31,11 +32,17 @@ class FavouritesViewModel: FavouritesViewModelType, FavouritesViewModelInput, Fa
         
         /// init INPUT
         self.viewAppeared = PublishSubject<Void>().asObserver()
+        self.selectFavourite = PublishSubject<FavouriteViewModel>().asObserver()
         
         /// init OUTPUT
         self.data = Observable.empty()
         self.data = viewAppeared.flatMapLatest( { _ -> Observable<[FavouriteViewModel]> in
             return self.favouritesRepository.fetchFavourites().map{ $0.map { FavouriteViewModel(with: $0) }}
+        })
+        
+        _ = selectFavourite.subscribe(onNext:{
+            guard let url = URL(string: $0.url) else { return }
+            self.router.trigger(.safari(url: url))
         })
     }
     

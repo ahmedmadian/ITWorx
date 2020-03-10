@@ -17,10 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        customApperanceForPageControl()
         window = UIWindow(frame: UIScreen.main.bounds)
         router.setRoot(for: window!)
         
         return true
+    }
+    
+    private func customApperanceForPageControl(){
+        let pageControl = UIPageControl.appearance()
+        pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     }
 }
 

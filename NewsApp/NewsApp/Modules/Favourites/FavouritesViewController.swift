@@ -34,6 +34,10 @@ class FavouritesViewController: BaseViewController, BindableType {
             .bind(to: viewModel.input.viewAppeared)
             .disposed(by: disposeBag)
         
+        tableView.rx.modelSelected(FavouriteViewModel.self)
+            .bind(to: viewModel.input.selectFavourite)
+            .disposed(by: disposeBag)
+        
         /// Outputs
         viewModel.output.data
             .observeOn(MainScheduler.instance)

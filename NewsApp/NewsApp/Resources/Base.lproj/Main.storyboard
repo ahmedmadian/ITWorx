@@ -7,14 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--ON-->
-        <scene sceneID="FZR-kf-7Eb">
-            <objects>
-                <pageViewController storyboardIdentifier="ON" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="ihI-0O-cRC" customClass="ON" customModule="NewsApp" customModuleProvider="target" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dRl-SU-vQN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1542" y="131"/>
-        </scene>
         <!--Tags View Controller-->
         <scene sceneID="wZT-QP-pKD">
             <objects>
