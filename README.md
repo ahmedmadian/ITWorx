@@ -1,6 +1,6 @@
 # ITWORX Education
 
-![]() <br />
+![](ITWORX.png) <br />
 <br />
 This demo for iOS developer vacancy in ITWORX Education.
 
