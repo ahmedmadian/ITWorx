@@ -33,4 +33,3 @@ Alamofire  <br />
 Kingfisher  <br />
 XCoordinator  <br />
 SwiftMessages  <br />
-RxCoreData  <br />
